@@ -1,0 +1,287 @@
+{
+  "version": 0.6,
+  "generator": "Overpass API 0.7.62.11 87bfad18",
+  "osm3s": {
+    "timestamp_osm_base": "2026-10-13T10:09:46Z",
+    "timestamp_areas_base": "2026-10-12T15:16:01Z",
+    "copyright": "The data included in this document is from www.openstreetmap.org. The data is made available under ODbL."
+  },
+  "elements": [
+
+{
+  "type": "node",
+  "id": 3451793093,
+  "lat": 24.9915558,
+  "lon": 121.5407561,
+  "tags": {
+    "addr:city": "臺北市",
+    "addr:country": "TW",
+    "addr:district": "文山區",
+    "addr:full": "116臺北市文山區車前路12號",
+    "addr:housenumber": "12",
+    "addr:postcode": "116",
+    "addr:street": "車前路",
+    "amenity": "social_facility",
+    "name": "三園老人長期照顧中心",
+    "social_facility:for": "senior"
+  }
+},
+{
+  "type": "node",
+  "id": 4007798836,
+  "lat": 24.9926273,
+  "lon": 121.5397860,
+  "tags": {
+    "amenity": "nursing_home",
+    "name": "景美醫院附設護理之家"
+  }
+},
+{
+  "type": "node",
+  "id": 4200642687,
+  "lat": 24.9975405,
+  "lon": 121.5521031,
+  "tags": {
+    "addr:city": "臺北市",
+    "addr:country": "TW",
+    "addr:district": "文山區",
+    "addr:full": "116077臺北市文山區辛亥路五段120-1號",
+    "addr:housenumber": "120-1",
+    "addr:postcode": "116077",
+    "addr:street": "辛亥路五段",
+    "amenity": "social_facility",
+    "name": "台北市私立心慈老人養護所",
+    "phone": "+886 2 2931 4730",
+    "social_facility": "nursing_home",
+    "social_facility:for": "senior",
+    "website": "http://www.xinci.tw"
+  }
+},
+{
+  "type": "node",
+  "id": 4463097989,
+  "lat": 25.0009015,
+  "lon": 121.5517212,
+  "tags": {
+    "amenity": "social_facility",
+    "name": "慧華老人安養中心",
+    "social_facility": "group_home",
+    "social_facility:for": "senior"
+  }
+},
+{
+  "type": "node",
+  "id": 4524318966,
+  "lat": 25.0041722,
+  "lon": 121.5392085,
+  "tags": {
+    "addr:city": "臺北市",
+    "addr:country": "TW",
+    "addr:district": "文山區",
+    "addr:full": "116臺北市文山區興隆路一段2;4號",
+    "addr:housenumber": "2;4",
+    "addr:postcode": "116",
+    "addr:street": "興隆路一段",
+    "amenity": "social_facility",
+    "name": "慈安老人長期照護中心",
+    "social_facility": "senior",
+    "social_facility:for": "senior",
+    "toilets:wheelchair": "yes",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 5569304680,
+  "lat": 25.0448987,
+  "lon": 121.5808875,
+  "tags": {
+    "amenity": "social_facility",
+    "name": "倚青苑老人養護所",
+    "social_facility": "nursing_home",
+    "social_facility:for": "senior"
+  }
+},
+{
+  "type": "node",
+  "id": 13142341116,
+  "lat": 24.9871275,
+  "lon": 121.5696268,
+  "tags": {
+    "addr:city": "台北市",
+    "addr:country": "TW",
+    "addr:district": "文山區",
+    "addr:full": "116台北市文山區永安街6巷11號",
+    "addr:housenumber": "11",
+    "addr:postcode": "116",
+    "addr:street": "永安街6巷",
+    "amenity": "social_facility",
+    "contact:facebook": "https://www.facebook.com/syuanyuedaycare",
+    "name": "暄悅永安日間照顧中心",
+    "phone": "+886 2 2365 9991",
+    "social_facility": "nursing_home",
+    "social_facility:for": "senior"
+  }
+},
+{
+  "type": "node",
+  "id": 13708478560,
+  "lat": 25.1186517,
+  "lon": 121.4676026,
+  "tags": {
+    "amenity": "social_facility",
+    "name": "臺北市立浩然敬老院",
+    "social_facility": "nursing_home",
+    "social_facility:for": "senior",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 311168371,
+  "center": {
+    "lat": 25.0347801,
+    "lon": 121.4954899
+  },
+  "tags": {
+    "addr:city": "台北市",
+    "addr:country": "TW",
+    "addr:district": "萬華區",
+    "addr:full": "10856台北市萬華區大理街175巷27號",
+    "addr:housenumber": "27",
+    "addr:postcode": "10856",
+    "addr:street": "大理街175巷",
+    "amenity": "social_facility",
+    "name": "台北市私立愛愛院",
+    "operator": "財團法人愛愛院",
+    "social_facility": "group_home",
+    "social_facility:for": "senior",
+    "website": "https://aiai.org.tw/",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 440915456,
+  "center": {
+    "lat": 25.1507981,
+    "lon": 121.5474101
+  },
+  "tags": {
+    "amenity": "social_facility",
+    "building": "social",
+    "name": "陽明山養老院",
+    "social_facility": "group_home",
+    "social_facility:for": "senior"
+  }
+},
+{
+  "type": "way",
+  "id": 489324126,
+  "center": {
+    "lat": 25.0507370,
+    "lon": 121.5345980
+  },
+  "tags": {
+    "addr:city": "臺北市",
+    "addr:country": "TW",
+    "addr:district": "中山區",
+    "addr:full": "104臺北市中山區朱園里9鄰伊通街28號",
+    "addr:hamlet": "朱園里",
+    "addr:housenumber": "28",
+    "addr:neighborhood": "9",
+    "addr:postcode": "104",
+    "addr:street": "伊通街",
+    "amenity": "social_facility",
+    "building": "yes",
+    "name": "宜恩住宿長照機構",
+    "social_facility": "nursing_home",
+    "social_facility:for": "senior"
+  }
+},
+{
+  "type": "way",
+  "id": 503068341,
+  "center": {
+    "lat": 25.1010149,
+    "lon": 121.5440200
+  },
+  "tags": {
+    "amenity": "social_facility",
+    "name": "至善老人安養中心",
+    "name:zh": "至善老人安養中心",
+    "name:zh-Hans": "至善老人安养中心",
+    "name:zh-Hant": "至善老人安養中心",
+    "social_facility": "nursing_home",
+    "social_facility:for": "senior"
+  }
+},
+{
+  "type": "way",
+  "id": 524396346,
+  "center": {
+    "lat": 25.1107818,
+    "lon": 121.5494995
+  },
+  "tags": {
+    "amenity": "social_facility",
+    "barrier": "wall",
+    "name": "陽明教養院永福院區",
+    "social_facility": "nursing_home",
+    "social_facility:for": "senior"
+  }
+},
+{
+  "type": "way",
+  "id": 824479863,
+  "center": {
+    "lat": 24.9892283,
+    "lon": 121.5840586
+  },
+  "tags": {
+    "addr:city": "臺北市",
+    "addr:country": "TW",
+    "addr:district": "文山區",
+    "addr:full": "116016臺北市文山區政大二街129號",
+    "addr:housenumber": "129",
+    "addr:postcode": "116016",
+    "addr:street": "政大二街",
+    "amenity": "social_facility",
+    "name": "臺北市兆如老人安養護中心",
+    "phone": "+886 2 2936 2188",
+    "social_facility": "nursing_home",
+    "social_facility:for": "senior",
+    "website": "https://zhaoru.ablh.com.tw"
+  }
+},
+{
+  "type": "relation",
+  "id": 9986857,
+  "center": {
+    "lat": 24.9861605,
+    "lon": 121.5621446
+  },
+  "tags": {
+    "addr:city": "臺北市",
+    "addr:country": "TW",
+    "addr:district": "文山區",
+    "addr:full": "116006臺北市文山區興隆路4段109巷30弄6號",
+    "addr:housenumber": "6",
+    "addr:postcode": "116006",
+    "addr:street": "興隆路四段109巷30弄",
+    "amenity": "social_facility",
+    "fax": "+886 2 2938 4624",
+    "full_name": "臺北市政府社會局老人自費安養中心",
+    "name": "老人自費安養中心",
+    "operator:wikidata": "Q15931858",
+    "phone": "+886 2 2939 3146",
+    "social_facility": "nursing_home",
+    "social_facility:for": "senior",
+    "start_date": "1983-03",
+    "type": "multipolygon",
+    "website": "https://dosw.gov.taipei/Content_List.aspx?n=FDFF0B3FA01CD208"
+  }
+}
+
+  ]
+}

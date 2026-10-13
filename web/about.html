@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>一樹同仁 · 方法與資料</title>
+<meta name="description" content="一樹同仁怎麼算樹蔭公平、怎麼用、資料從哪來、有哪些限制。">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌳</text></svg>">
+<style>
+  :root { --bg: #f6f4ef; --ink: #1d2320; --muted: #66706b; --line: #e3e0d8; --green: #2f7d4f; --green-soft: #e3f0e7; --sun: #d9480f; }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--ink);
+    font: 16px/1.75 -apple-system, "PingFang TC", "Noto Sans TC", "Helvetica Neue", sans-serif; }
+  main { max-width: 760px; margin: 0 auto; padding: 32px 16px 80px; }
+  a { color: var(--green); }
+  .back { font-size: 14px; }
+  h1 { font-size: 32px; line-height: 1.3; margin: 16px 0 8px; }
+  h2 { font-size: 22px; margin: 48px 0 8px; padding-top: 8px; border-top: 1px solid var(--line); }
+  h3 { font-size: 17px; margin: 24px 0 4px; }
+  .lede { font-size: 18px; color: #39433e; }
+  .muted { color: var(--muted); font-size: 14px; }
+  nav.toc { background: #fff; border: 1px solid var(--line); border-radius: 12px; padding: 12px 18px; font-size: 14px; }
+  nav.toc ol { margin: 4px 0; padding-left: 20px; columns: 2; }
+  .box { background: #fff; border: 1px solid var(--line); border-radius: 12px; padding: 14px 18px; margin: 12px 0; }
+  .box.green { background: var(--green-soft); border-color: #c9e2d1; }
+  .box.warn { background: #fff7e0; border-color: #f0dfa8; }
+  code, .formula { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 14px; }
+  .formula { display: block; background: #fff; border: 1px solid var(--line); border-radius: 8px; padding: 10px 14px; margin: 8px 0; overflow-x: auto; }
+  table { width: 100%; border-collapse: collapse; font-size: 14px; margin: 8px 0; }
+  th, td { text-align: left; padding: 8px 6px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  th { color: var(--muted); font-weight: 600; }
+  .num { font-variant-numeric: tabular-nums; white-space: nowrap; }
+  .tablewrap { overflow-x: auto; }
+</style>
+</head>
+<body>
+<main>
+<a class="back" href="./">← 回地圖</a>
+<h1>一樹同仁：把樹種回最需要樹蔭的地方</h1>
+<p class="lede">2025 年台北移除了 3,164 棵樹。這個工具回答一個問題：<b>如果要種回去，該種在哪裡，才對最需要樹蔭的人最有幫助？</b></p>
+<p class="muted">開源（MIT）、資料全部公開可重現。市政 debug松 · 題目 #1「把三千棵樹種回來」。</p>
+
+<nav class="toc"><b>目錄</b>
+<ol>
+  <li><a href="#use">怎麼用</a></li>
+  <li><a href="#bug">資料本身就是 bug</a></li>
+  <li><a href="#score">樹蔭公平分數怎麼算</a></li>
+  <li><a href="#factors">四個需要指標</a></li>
+  <li><a href="#modes">需要優先種 vs 平均種</a></li>
+  <li><a href="#sites">種樹點從哪裡來</a></li>
+  <li><a href="#limits">限制：我們還不知道的事</a></li>
+  <li><a href="#data">資料來源與授權</a></li>
+  <li><a href="#oss">開源、參與、其他城市</a></li>
+  <li><a href="#plan">100 天計畫</a></li>
+  <li><a href="#log">版本紀錄</a></li>
+</ol></nav>
+
+<h2 id="use">1. 怎麼用</h2>
+<div class="box green">
+<ol>
+  <li><b>看地圖</b>：每個里一個顏色。橘紅＝最缺樹蔭，綠＝已達標。</li>
+  <li><b>按「種回 3,164 棵」</b>：看這些樹會種在哪裡。按鈕再按一次，就換成「平均種」對照，看同樣的樹分給誰。</li>
+  <li><b>點一個里</b>：看它為什麼需要樹蔭（四個指標）、分到幾棵、種在哪些點。</li>
+  <li><b>幫忙確認</b>：每個點按「看街景」，回來按「空的／已經有樹／不能種」。一個點 30 秒。</li>
+  <li><b>下載施工清單</b>：每個里可以下載 CSV，包含座標、街景連結和市民確認結果，給里長、議員或公園處使用。</li>
+</ol>
+</div>
+<p class="muted">分享連結：網址加 <code>?plant=1&amp;li=里代碼</code> 會直接打開那個里並種好樹。</p>
+
+<h2 id="bug">2. 資料本身就是 bug</h2>
+<p>市府圖資有約 15,500 個人行道樹穴，附近找不到任何登記的樹，看起來像空的。我們用 Google 街景隨機抽查 30 個：</p>
+<div class="tablewrap"><table>
+  <tr><th>街景看到</th><th class="num">數量</th></tr>
+  <tr><td>真的是空樹穴</td><td class="num">4</td></tr>
+  <tr><td>其實有樹（其中 10 棵根本不在市府樹木資料裡）</td><td class="num">19</td></tr>
+  <tr><td>沒有樹穴（鋪掉、施工中、點位在馬路上）</td><td class="num">5</td></tr>
+  <tr><td>看不清楚</td><td class="num">2</td></tr>
+</table></div>
+<p>推估真正的空樹穴大約 <b>1,700–2,200 個</b>（95% 信賴區間 885–4,900，樣本小）。也就是說：<b>市府的樹木和樹穴資料，對不上現實的比例很高。</b>在資料修好之前，任何「種在哪裡」的決定都建立在錯的地圖上。</p>
+<p>所以這個工具的核心是兩件事：<b>①用公平的方法排出優先順序，②讓市民一起用街景把資料修正確</b>。每一筆確認都直接讓施工清單更可靠。</p>
+<p class="muted">抽查方法與每個點的紀錄：<a href="https://github.com/dandanbang/shade-equity/blob/main/research/streetview-check.md">research/streetview-check.md</a></p>
+
+<h2 id="score">3. 樹蔭公平分數怎麼算</h2>
+<p>我們用美國非營利組織 American Forests 的 <a href="https://treeequityscore.org/methodology">Tree Equity Score</a> 方法，這是美國許多城市（例如鳳凰城）用來決定先在哪裡種樹的公開方法，改成台北的資料。</p>
+<span class="formula">分數 = 100 ×（1 − 樹冠缺口 × 需要程度）</span>
+<ul>
+  <li><b>樹冠缺口</b>：目標是每個里 30% 的地面有樹冠（國際「3-30-300」原則的 30）。缺口 =（30% − 現在的樹冠）÷ 30%，已達標就是 0。</li>
+  <li><b>需要程度</b>：四個指標的平均（下一節），換算成 0.1–1。</li>
+  <li>分數 100 ＝ 已達標；分數越低 ＝ 越缺樹蔭、也越需要。</li>
+</ul>
+<p>目前台北 456 個里平均 63 分，312 個里低於 70 分。</p>
+
+<h2 id="factors">4. 四個需要指標</h2>
+<p>同樣缺樹，有些地方的人更需要樹蔭。每個指標都換算成 0–100：<b>這個里在全台北 456 里中的相對位置</b>（最低的里是 0，最高的是 100），四項等權重，和 Tree Equity Score 一樣。</p>
+<div class="tablewrap"><table>
+  <tr><th>指標</th><th>量什麼</th><th>為什麼重要</th></tr>
+  <tr><td><b>地表高溫</b></td><td>2023–2025 年夏天 14 張 Landsat 衛星影像的地表溫度中位數</td><td>樹蔭降溫主要是擋住輻射熱：同一條街，有沒有樹蔭的體感溫度可以差 7°C 以上。</td></tr>
+  <tr><td><b>老人與小孩比例</b></td><td>扶養比：65 歲以上和 18 歲以下人數 ÷ 18–64 歲人數（內政部 2026 年 9 月）</td><td>長者和小孩最容易熱傷害；國健署把 65 歲以上列為高風險。</td></tr>
+  <tr><td><b>所得偏低</b></td><td>財政部各里綜合所得稅所得中位數（2023 年），越低分數越高</td><td>低所得家庭比較少冷氣、比較常走路和等公車；美國研究顯示低所得社區平均更熱。</td></tr>
+  <tr><td><b>步行人流</b></td><td>每平方公里的公車站、捷運出口、學校、市場、醫療與長照據點數量</td><td>樹蔭只有在有人走的地方才有用。</td></tr>
+</table></div>
+
+<h2 id="modes">5. 需要優先種 vs 平均種</h2>
+<p>兩種方法種的都是同樣 3,164 棵、同樣的候選點，只有「分給誰」不同：</p>
+<ul>
+  <li><b>需要優先種</b>：每一棵樹都放在「能讓公平分數進步最多」的里（缺口 × 需要程度最大的地方），種了之後那個里的缺口變小，下一棵再重新比較。同一個里裡，先種周邊最沒樹蔭、離人潮最近的點。</li>
+  <li><b>平均種</b>：從全市候選點隨機抽 3,164 個，不看誰需要。這是對照組，代表「不刻意考慮公平」時的結果。</li>
+</ul>
+<div class="tablewrap"><table>
+  <tr><th></th><th class="num">平均種</th><th class="num">需要優先種</th></tr>
+  <tr><td>種在最需要的 20% 里的樹</td><td class="num">495 棵（15.6%）</td><td class="num"><b>1,469 棵（46.4%）</b></td></tr>
+  <tr><td>種下處比全市平均熱多少（地表）</td><td class="num">+6.2°C</td><td class="num"><b>+8.9°C</b></td></tr>
+  <tr><td>種下處的所得中位數</td><td class="num">73.2 萬</td><td class="num"><b>68.0 萬</b></td></tr>
+</table></div>
+<p>同樣的樹，需要優先種讓 3 倍的樹落在最需要的地方。</p>
+
+<h2 id="sites">6. 種樹點從哪裡來</h2>
+<h3>疑似空樹穴（灰點）</h3>
+<p>市府人行道樹穴圖資裡，2 公尺內沒有任何登記行道樹或公園樹的樹穴。如第 2 節所說，大多數其實有樹，所以標示「待確認」。</p>
+<h3>新增樹穴（空心圈）</h3>
+<p>最缺樹蔭的里，往往連空樹穴都很少，例如松山區新聚里只有 1 個。所以我們也找可以<b>新挖</b>樹穴的地方：</p>
+<ul>
+  <li>人行道有效寬度至少 2.5 公尺：樹穴約 1 公尺，還要留 1.5 公尺淨寬給行人（依《市區道路及附屬工程設計規範》）。</li>
+  <li>沿人行道每 8 公尺一個點，距離現有樹木至少 6 公尺、現有樹穴至少 4 公尺。</li>
+  <li>地下管線資料不公開，所以每個新增點都要現場勘查。</li>
+</ul>
+<h3>跳過已經有樹蔭的點</h3>
+<p>用 Meta 1 公尺樹冠高度圖，計算每個點周圍 30×30 公尺的樹冠比例。超過 50% 的點不列入：已經很陰涼的地方，多種一棵幫助不大。</p>
+
+<h2 id="limits">7. 限制：我們還不知道的事</h2>
+<div class="box warn">
+<ul>
+  <li><b>移除的 3,164 棵在哪裡</b>：逐棵移除紀錄沒有開放下載，所以我們不知道每棵原本的位置，只用官方總數。</li>
+  <li><b>樹木與樹穴資料不準</b>：見第 2 節。這正是市民確認要修的。</li>
+  <li><b>樹冠圖年份</b>：Meta 樹冠高度圖用的是 2005–2020 年的衛星影像，近年新種或移除的樹可能還沒反映。</li>
+  <li><b>地表溫度 ≠ 氣溫</b>：衛星量的是早上約 10:30 的地面溫度，用來比較里與里之間的相對熱度，不是體感溫度。</li>
+  <li><b>巷弄沒有人行道資料</b>：很多最熱的里是窄巷，這份圖資沒有涵蓋。巷弄植栽、退縮地和校園是 100 天計畫的一部分。</li>
+  <li><b>所得是 2023 年</b>（財政部最新公開年度）；人口是 2026 年 9 月。</li>
+</ul>
+</div>
+<p><b>真實與模擬資料</b>：本工具<b>沒有使用任何模擬資料</b>。所有數字都來自下列公開資料，可用原始碼重新計算。</p>
+
+<h2 id="data">8. 資料來源與授權</h2>
+<div class="tablewrap"><table>
+  <tr><th>資料</th><th>來源</th><th>授權</th></tr>
+  <tr><td>行道樹 90,441 棵、公園樹木 72,011 棵</td><td>臺北市政府 · <a href="https://data.gov.tw/dataset/128274">data.gov.tw/128274</a></td><td>政府資料開放授權條款 1.0</td></tr>
+  <tr><td>人行道樹穴 50,904 個</td><td><a href="https://data.gov.tw/dataset/134908">data.gov.tw/134908</a></td><td>同上</td></tr>
+  <tr><td>人行道範圍與寬度</td><td><a href="https://data.taipei/dataset/detail?id=715d3a83-8445-4496-b6bf-b0900538b7e7">data.taipei</a></td><td>同上</td></tr>
+  <tr><td>村里界、各里單一年齡人口</td><td>內政部 · <a href="https://data.gov.tw/dataset/7438">7438</a>、<a href="https://data.gov.tw/dataset/136896">136896</a></td><td>同上</td></tr>
+  <tr><td>各里綜合所得稅所得</td><td>財政部財政資訊中心 · <a href="https://data.gov.tw/dataset/17983">17983</a></td><td>同上</td></tr>
+  <tr><td>地表溫度</td><td>USGS Landsat 8/9 Collection 2 Level-2，經 Microsoft Planetary Computer</td><td>公共領域</td></tr>
+  <tr><td>樹冠高度 1 m</td><td>Meta &amp; WRI Global Canopy Height</td><td>CC BY 4.0</td></tr>
+  <tr><td>公車站、捷運出口、市場</td><td>臺北市政府開放資料</td><td>政府資料開放授權條款 1.0</td></tr>
+  <tr><td>學校、醫療、長照據點</td><td>OpenStreetMap</td><td>ODbL</td></tr>
+  <tr><td>底圖</td><td>OpenFreeMap · OpenStreetMap</td><td>ODbL</td></tr>
+</table></div>
+<p class="muted">完整清單、欄位、座標系統與重現指令：<a href="https://github.com/dandanbang/shade-equity/blob/main/data/MANIFEST.md">data/MANIFEST.md</a>。</p>
+
+<h2 id="oss">9. 開源、參與、其他城市</h2>
+<ul>
+  <li><b>原始碼</b>：<a href="https://github.com/dandanbang/shade-equity">github.com/dandanbang/shade-equity</a>（程式 MIT，資料依原始授權）。</li>
+  <li><b>重現</b>：<code>bash data/fetch.sh</code> 下載資料，<code>make all</code> 重算所有分數。</li>
+  <li><b>回報錯誤</b>：在 GitHub 開 issue，或直接在地圖上用街景確認。</li>
+  <li><b>其他城市</b>：分數方法只需要「樹冠、人口年齡、所得、溫度、人流」，全台每個村里都有人口與所得資料，Meta 樹冠和 Landsat 全球都有。臺中是第二個有逐棵樹木座標的城市，下一個就是它。</li>
+</ul>
+<p class="muted">使用的工具：MapLibre GL、GeoPandas、rasterio、Microsoft Planetary Computer、OpenFreeMap；AI 協作：Claude Code（Anthropic），用於資料處理、程式和研究整理，結果都有人工檢查，關鍵數字有街景抽查。</p>
+
+<h2 id="plan">10. 100 天計畫</h2>
+<ol>
+  <li><b>第 1–30 天</b>：市民街景確認 1,000 個點；和公園處對資料差異；找 3 個最缺樹蔭的里，與里長一起現場走。</li>
+  <li><b>第 31–60 天</b>：第一批種植（以已確認的空樹穴為主）；公開每棵樹的「種下 → 存活」紀錄；樹穴太小的老樹列入健檢。</li>
+  <li><b>第 61–100 天</b>：加入巷弄植栽與退縮地；每棵樹一個公開頁面（市民可認養、收到移除預告）；開放臺中等其他城市使用。</li>
+</ol>
+
+<h2 id="log">11. 版本紀錄</h2>
+<ul>
+  <li><b>2026-10-13 · v0.4</b>：每個種樹點有固定編號，市民確認不會因為重算而遺失；按鈕改為「種完 → 換對照」；加上說明頁、四個指標的白話解釋、確認步驟。</li>
+  <li><b>v0.3</b>：樹冠改用 Meta 1 公尺樹冠高度圖。原本 10 公尺的 ESA 土地覆蓋圖看不到行道樹，也把河濱草地算成樹。跳過周圍已有樹蔭的點；把新增樹穴納入分配，因為最缺樹蔭的里空樹穴不夠。</li>
+  <li><b>v0.2</b>：街景抽查發現「15,536 個空樹穴」大部分不是空的，改寫首頁，市民確認成為核心功能；新增寬人行道的新增樹穴候選點。</li>
+  <li><b>v0.1</b>：樹蔭公平分數（Tree Equity Score 方法）、需要優先 vs 平均分配、里資訊與施工清單。</li>
+</ul>
+</main>
+</body>
+</html>

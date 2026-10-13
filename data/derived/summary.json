@@ -1,0 +1,26 @@
+{
+ "equity": {
+  "trees_to_top20pct_need_li": 1469,
+  "share_top20pct": 46.4,
+  "tree_wtd_E": 0.717,
+  "tree_wtd_median_income_k": 680,
+  "tree_wtd_heat_anom_c": 8.94,
+  "li_reached": 144,
+  "age65_in_receiving_li": 171510
+ },
+ "even": {
+  "trees_to_top20pct_need_li": 495,
+  "share_top20pct": 15.6,
+  "tree_wtd_E": 0.646,
+  "tree_wtd_median_income_k": 732,
+  "tree_wtd_heat_anom_c": 6.15,
+  "li_reached": 376,
+  "age65_in_receiving_li": 512081
+ },
+ "empty_pits": 15534,
+ "new_spots": 4945,
+ "pits_total": 50904,
+ "alloc_to_new_spots": 959,
+ "city_TES_mean": 63.4,
+ "li_TES_below_70": 312
+}

@@ -1,0 +1,7 @@
+data/raw/*.zip
+data/raw/village_tgos_x/
+data/raw/TaipeiTree.json
+data/raw/TaipeiParkTree.json
+.venv/
+tools/node_modules/
+NOTES.local.md

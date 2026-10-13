@@ -1,0 +1,1658 @@
+{
+  "version": 0.6,
+  "generator": "Overpass API 0.7.62.11 87bfad18",
+  "osm3s": {
+    "timestamp_osm_base": "2026-10-13T10:09:46Z",
+    "timestamp_areas_base": "2026-10-12T15:16:01Z",
+    "copyright": "The data included in this document is from www.openstreetmap.org. The data is made available under ODbL."
+  },
+  "elements": [
+
+{
+  "type": "node",
+  "id": 740456220,
+  "lat": 25.0135307,
+  "lon": 121.5350587,
+  "tags": {
+    "amenity": "marketplace",
+    "name": "水源市場",
+    "name:en": "Suiuan Market",
+    "name:nan": "Chúi-goân Chhài-chhī-á",
+    "name:nan-Hant": "水源菜市仔",
+    "name:nan-Latn-pehoeji": "Chúi-goân Chhài-chhī-á",
+    "name:nan-Latn-tailo": "Tsuí-guân Tshài-tshī-á",
+    "name:zh": "水源市場"
+  }
+},
+{
+  "type": "node",
+  "id": 1837935254,
+  "lat": 25.0825640,
+  "lon": 121.5668479,
+  "tags": {
+    "amenity": "marketplace",
+    "name": "西湖市場"
+  }
+},
+{
+  "type": "node",
+  "id": 2086707419,
+  "lat": 25.0674413,
+  "lon": 121.6142193,
+  "tags": {
+    "amenity": "marketplace"
+  }
+},
+{
+  "type": "node",
+  "id": 2178660011,
+  "lat": 25.0500836,
+  "lon": 121.5210596,
+  "tags": {
+    "addr:city": "台北市",
+    "addr:country": "TW",
+    "addr:district": "中山區",
+    "addr:full": "104台北市中山區長安西路3號",
+    "addr:housenumber": "3",
+    "addr:postcode": "104",
+    "addr:street": "長安西路",
+    "amenity": "marketplace",
+    "level": "0",
+    "name": "中山市場",
+    "wikidata": "Q30947515",
+    "wikipedia": "zh:中山市場 (臺北)"
+  }
+},
+{
+  "type": "node",
+  "id": 2338822735,
+  "lat": 25.0601729,
+  "lon": 121.5319804,
+  "tags": {
+    "addr:city": "台北市",
+    "addr:country": "TW",
+    "addr:district": "中山區",
+    "addr:full": "104台北市中山區錦州街222號",
+    "addr:housenumber": "222",
+    "addr:postcode": "104",
+    "addr:street": "錦州街",
+    "amenity": "marketplace",
+    "name": "松江市場",
+    "opening_hours": "Tu-Su 07:00-23:30"
+  }
+},
+{
+  "type": "node",
+  "id": 3141123279,
+  "lat": 25.0347024,
+  "lon": 121.4998856,
+  "tags": {
+    "amenity": "marketplace",
+    "name": "龍山商場",
+    "wikidata": "Q11180503",
+    "wikipedia": "zh:龍山商場"
+  }
+},
+{
+  "type": "node",
+  "id": 3201203197,
+  "lat": 25.0323362,
+  "lon": 121.5182324,
+  "tags": {
+    "addr:city": "臺北市",
+    "addr:country": "TW",
+    "addr:district": "中正區",
+    "addr:full": "100臺北市中正區龍福里4鄰羅斯福路一段8號",
+    "addr:hamlet": "龍福里",
+    "addr:housenumber": "8",
+    "addr:neighbourhood": "4",
+    "addr:postcode": "100",
+    "addr:street": "羅斯福路一段",
+    "amenity": "marketplace",
+    "name": "南門市場",
+    "official_name": "臺北市公有南門市場",
+    "wikidata": "Q30947507",
+    "wikipedia": "zh:南門市場"
+  }
+},
+{
+  "type": "node",
+  "id": 3536365966,
+  "lat": 25.0403072,
+  "lon": 121.5308502,
+  "tags": {
+    "addr:city": "臺北市",
+    "addr:country": "TW",
+    "addr:district": "中正區",
+    "addr:full": "臺北市中正區濟南路二段46號",
+    "addr:housenumber": "46",
+    "addr:postcode": "100",
+    "addr:street": "濟南路二段",
+    "amenity": "marketplace",
+    "name": "幸安市場",
+    "official_name": "臺北市公有幸安市場",
+    "old_name": "大安市場"
+  }
+},
+{
+  "type": "node",
+  "id": 3835275557,
+  "lat": 25.0589298,
+  "lon": 121.5096435,
+  "tags": {
+    "addr:city": "台北市",
+    "addr:country": "TW",
+    "addr:district": "大同區",
+    "addr:full": "台北市迪化街179號",
+    "addr:housenumber": "179",
+    "addr:postcode": "103",
+    "addr:street": "迪化街一段",
+    "amenity": "marketplace",
+    "name": "物豐餐飲專業",
+    "wheelchair": "yes",
+    "wheelchair:description": "走道寬敞，有斜坡通行 ０２－２５５７４３９０"
+  }
+},
+{
+  "type": "node",
+  "id": 3835835005,
+  "lat": 25.0813177,
+  "lon": 121.5216138,
+  "tags": {
+    "amenity": "marketplace",
+    "name": "劍潭市場"
+  }
+},
+{
+  "type": "node",
+  "id": 3840862938,
+  "lat": 25.0607264,
+  "lon": 121.5334910,
+  "tags": {
+    "amenity": "marketplace",
+    "name": "大都會珠寶古董商場"
+  }
+},
+{
+  "type": "node",
+  "id": 3929888370,
+  "lat": 24.9918289,
+  "lon": 121.5407223,
+  "tags": {
+    "amenity": "marketplace",
+    "disused:amenity": "marketplace",
+    "disused:name": "來欣廣場",
+    "name": "太陽百貨廣場"
+  }
+},
+{
+  "type": "node",
+  "id": 4007798835,
+  "lat": 24.9906941,
+  "lon": 121.5416987,
+  "tags": {
+    "alt_name": "景美夜市",
+    "amenity": "marketplace",
+    "name": "景美市場",
+    "wikidata": "Q11090154",
+    "wikipedia": "zh:景美夜市"
+  }
+},
+{
+  "type": "node",
+  "id": 4018210636,
+  "lat": 25.0447721,
+  "lon": 121.5332075,
+  "tags": {
+    "amenity": "marketplace",
+    "name": "光華玉市"
+  }
+},
+{
+  "type": "node",
+  "id": 4043621263,
+  "lat": 25.0294434,
+  "lon": 121.5042966,
+  "tags": {
+    "amenity": "marketplace",
+    "name": "南機場市場"
+  }
+},
+{
+  "type": "node",
+  "id": 4384259003,
+  "lat": 25.0450093,
+  "lon": 121.5331492,
+  "tags": {
+    "amenity": "marketplace",
+    "name": "新光華商場"
+  }
+},
+{
+  "type": "node",
+  "id": 4510919123,
+  "lat": 25.0290294,
+  "lon": 121.5610962,
+  "tags": {
+    "amenity": "marketplace",
+    "name": "三興市場"
+  }
+},
+{
+  "type": "node",
+  "id": 4524863657,
+  "lat": 25.0279405,
+  "lon": 121.5629691,
+  "tags": {
+    "amenity": "marketplace",
+    "name": "吳興商圈"
+  }
+},
+{
+  "type": "node",
+  "id": 4524863804,
+  "lat": 25.0826576,
+  "lon": 121.5404368,
+  "tags": {
+    "amenity": "marketplace",
+    "name": "大直福利站"
+  }
+},
+{
+  "type": "node",
+  "id": 4574573817,
+  "lat": 25.0240890,
+  "lon": 121.5558536,
+  "tags": {
+    "amenity": "marketplace",
+    "disused:amenity": "cafe",
+    "disused:brand": "路易莎咖啡",
+    "disused:brand:en": "Louisa Coffee",
+    "disused:brand:wikidata": "Q67933328",
+    "disused:brand:zh": "路易莎咖啡",
+    "disused:cuisine": "coffee_shop",
+    "disused:name": "路易莎咖啡",
+    "disused:name:en": "Louisa Coffee",
+    "disused:name:zh": "路易莎咖啡",
+    "disused:takeaway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4670411299,
+  "lat": 25.0803690,
+  "lon": 121.5785904,
+  "tags": {
+    "amenity": "marketplace"
+  }
+},
+{
+  "type": "node",
+  "id": 4836651126,
+  "lat": 25.1369168,
+  "lon": 121.5025557,
+  "tags": {
+    "amenity": "marketplace",
+    "layer": "-1",
+    "name": "新北投文創天地"
+  }
+},
+{
+  "type": "node",
+  "id": 4837986400,
+  "lat": 25.0425146,
+  "lon": 121.5394106,
+  "tags": {
+    "amenity": "marketplace",
+    "name": "武昌商場"
+  }
+},
+{
+  "type": "node",
+  "id": 4837986561,
+  "lat": 25.0303187,
+  "lon": 121.5550161,
+  "tags": {
+    "amenity": "marketplace",
+    "name": "坡心市場"
+  }
+},
+{
+  "type": "node",
+  "id": 4959255521,
+  "lat": 25.1322649,
+  "lon": 121.5025828,
+  "tags": {
+    "amenity": "marketplace",
+    "name": "北投區公有市場",
+    "name:zh": "北投區公有市場"
+  }
+},
+{
+  "type": "node",
+  "id": 5109347770,
+  "lat": 25.0248381,
+  "lon": 121.5316095,
+  "tags": {
+    "amenity": "marketplace",
+    "name": "泰順街市場"
+  }
+},
+{
+  "type": "node",
+  "id": 5110491028,
+  "lat": 25.0484517,
+  "lon": 121.5072903,
+  "tags": {
+    "amenity": "marketplace",
+    "name": "西寧市場"
+  }
+},
+{
+  "type": "node",
+  "id": 5346792178,
+  "lat": 25.0480098,
+  "lon": 121.5526141,
+  "tags": {
+    "addr:city": "台北市",
+    "addr:country": "TW",
+    "addr:district": "松山區",
+    "addr:floor": "1;2",
+    "addr:full": "台北市松山區八德路三段76號1-2樓",
+    "addr:housenumber": "76",
+    "addr:street": "八德路三段",
+    "amenity": "marketplace",
+    "name": "中崙市場",
+    "name:en": "Zhonglun Market",
+    "name:nan": "Tiong-lūn Chhī-tiûⁿ",
+    "name:nan-Hant": "中崙市場",
+    "name:nan-Latn-pehoeji": "Tiong-lūn Chhī-tiûⁿ",
+    "name:nan-Latn-tailo": "Tiong-lûn-tshī-tiûnn",
+    "name:zh": "中崙市場",
+    "opening_hours": "PH,Mo-Su 07:00-14:00",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 6433461258,
+  "lat": 25.0570532,
+  "lon": 121.5104984,
+  "tags": {
+    "addr:city": "臺北市",
+    "addr:country": "TW",
+    "addr:district": "大同區",
+    "addr:full": "10347臺北市大同區民生西路365號",
+    "addr:housenumber": "365",
+    "addr:postcode": "10347",
+    "addr:street": "民生西路",
+    "amenity": "marketplace",
+    "name": "弘茂",
+    "note": "素食食品行",
+    "opening_hours": "Mo-Sa 09:00-20:30; Su 09:00-17:30",
+    "operator": "弘茂有限公司",
+    "phone": "+886 2 2553 2398"
+  }
+},
+{
+  "type": "node",
+  "id": 6451545624,
+  "lat": 25.0875259,
+  "lon": 121.5919582,
+  "tags": {
+    "addr:city": "臺北市",
+    "addr:country": "TW",
+    "addr:district": "內湖區",
+    "addr:full": "114臺北市內湖區內湖路三段60巷10弄2號",
+    "addr:housenumber": "2",
+    "addr:postcode": "114",
+    "addr:street": "內湖路三段60巷10弄",
+    "amenity": "marketplace",
+    "building": "house",
+    "name": "碧山市場"
+  }
+},
+{
+  "type": "node",
+  "id": 6792118395,
+  "lat": 25.0652356,
+  "lon": 121.5225863,
+  "tags": {
+    "amenity": "marketplace",
+    "name": "金萬萬商店街",
+    "wheelchair": "limited"
+  }
+},
+{
+  "type": "node",
+  "id": 7139458188,
+  "lat": 25.0441636,
+  "lon": 121.5248143,
+  "tags": {
+    "addr:city": "臺北市",
+    "addr:country": "TW",
+    "addr:district": "中正區",
+    "addr:full": "10050臺北市中正區忠孝東路一段108號",
+    "addr:housenumber": "108",
+    "addr:postcode": "10050",
+    "addr:street": "忠孝東路一段",
+    "amenity": "marketplace",
+    "check_date": "2026-02-11",
+    "name": "華山市場",
+    "name:en": "Hua Shan Market",
+    "name:zh": "華山市場",
+    "official_name": "臺北市公有華山市場",
+    "phone": "+886 2 2394 3802",
+    "toilets:wheelchair": "no",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 7263341449,
+  "lat": 25.0285357,
+  "lon": 121.5294164,
+  "tags": {
+    "amenity": "marketplace",
+    "name": "錦安市場"
+  }
+},
+{
+  "type": "node",
+  "id": 7495900563,
+  "lat": 25.0328892,
+  "lon": 121.5544949,
+  "tags": {
+    "addr:city": "台北市",
+    "addr:country": "TW",
+    "addr:district": "大安區",
+    "addr:floor": "11",
+    "addr:full": "106台北市大安區信義路四段296號十一樓之一",
+    "addr:housenumber": "296",
+    "addr:postcode": "106",
+    "addr:street": "信義路四段",
+    "addr:unit": "之一",
+    "amenity": "marketplace",
+    "name": "好食好市",
+    "name:en": "Healthy House",
+    "name:zh": "好食好市",
+    "opening_hours": "Mo-Fr 09:00-18:00"
+  }
+},
+{
+  "type": "node",
+  "id": 7652082718,
+  "lat": 25.0229413,
+  "lon": 121.5703731,
+  "tags": {
+    "amenity": "marketplace",
+    "name": "黃昏市場"
+  }
+},
+{
+  "type": "node",
+  "id": 12146204001,
+  "lat": 25.0367630,
+  "lon": 121.4976095,
+  "tags": {
+    "amenity": "marketplace",
+    "name": "廣州街觀光夜市",
+    "name:en": "Guangzhou Street Night Market",
+    "opening_hours": "Mo-Su 16:00-00:00",
+    "outdoor_seating": "no"
+  }
+},
+{
+  "type": "way",
+  "id": 136053076,
+  "center": {
+    "lat": 25.0616154,
+    "lon": 121.5394492
+  },
+  "tags": {
+    "amenity": "marketplace",
+    "building": "retail",
+    "name": "江寧市場"
+  }
+},
+{
+  "type": "way",
+  "id": 156426257,
+  "center": {
+    "lat": 25.0453260,
+    "lon": 121.6145816
+  },
+  "tags": {
+    "amenity": "marketplace",
+    "building": "retail",
+    "name": "中研市場",
+    "name:en": "Academia Sinica Market",
+    "name:zh": "中研市場",
+    "name:zh-Hans": "中研市场",
+    "name:zh-Hant": "中研市場"
+  }
+},
+{
+  "type": "way",
+  "id": 201268687,
+  "center": {
+    "lat": 25.0549446,
+    "lon": 121.5105269
+  },
+  "tags": {
+    "addr:city": "臺北市",
+    "addr:country": "TW",
+    "addr:district": "大同區",
+    "addr:full": "103012臺北市大同區迪化街一段21號",
+    "addr:housenumber": "21",
+    "addr:postcode": "103012",
+    "addr:street": "迪化街一段",
+    "amenity": "marketplace",
+    "building": "retail",
+    "name": "永樂布業商場",
+    "name:en": "Yongle Fabric Market",
+    "name:ja": "永楽市場",
+    "name:zh": "永樂布業商場",
+    "old_name": "永樂市場",
+    "old_name:en": "Yongle Market",
+    "opening_hours": "Mo-Sa 10:00-18:00",
+    "wikidata": "Q17417798"
+  }
+},
+{
+  "type": "way",
+  "id": 203723649,
+  "center": {
+    "lat": 25.0568847,
+    "lon": 121.5164951
+  },
+  "tags": {
+    "addr:city": "臺北市",
+    "addr:country": "TW",
+    "addr:district": "大同區",
+    "addr:floor": "1",
+    "addr:full": "10360臺北市大同區民生西路198-20號一樓",
+    "addr:housenumber": "198-20",
+    "addr:postcode": "10360",
+    "addr:street": "民生西路",
+    "amenity": "marketplace",
+    "building": "public",
+    "name": "雙連市場",
+    "operator": "臺北市市場處"
+  }
+},
+{
+  "type": "way",
+  "id": 207593854,
+  "center": {
+    "lat": 25.0454596,
+    "lon": 121.5366513
+  },
+  "tags": {
+    "amenity": "marketplace",
+    "building": "retail",
+    "building:levels": "1",
+    "name": "八德市場",
+    "name:en": "Bade Market",
+    "name:zh": "八德市場"
+  }
+},
+{
+  "type": "way",
+  "id": 220200406,
+  "center": {
+    "lat": 25.0787302,
+    "lon": 121.5453355
+  },
+  "tags": {
+    "amenity": "marketplace",
+    "building": "retail",
+    "name": "大直市場",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 221597595,
+  "center": {
+    "lat": 24.9999810,
+    "lon": 121.5472807
+  },
+  "tags": {
+    "addr:city": "臺北市",
+    "addr:country": "TW",
+    "addr:district": "文山區",
+    "addr:full": "臺北市文山區興隆路二段97號",
+    "addr:housenumber": "97",
+    "addr:street": "興隆路二段",
+    "amenity": "marketplace",
+    "building": "retail",
+    "building:levels": "4",
+    "contact:facebook": "https://www.facebook.com/195654530478492",
+    "name": "興隆市場",
+    "name:en": "Xinglong Market",
+    "name:nan": "Heng-liông Chhài-chhī-á",
+    "name:nan-Hant": "興隆菜市仔",
+    "name:nan-Latn-pehoeji": "Heng-liông Chhài-chhī-á",
+    "name:nan-Latn-tailo": "Hing-liông  Tshài-tshī-á",
+    "name:zh": "興隆市場",
+    "opening_hours": "Tu-Su 07:00-18:00",
+    "phone": "+886 2 2934 9714",
+    "source": "Bing"
+  }
+},
+{
+  "type": "way",
+  "id": 259683066,
+  "center": {
+    "lat": 25.1118779,
+    "lon": 121.5294469
+  },
+  "tags": {
+    "addr:city": "台北市",
+    "addr:country": "TW",
+    "addr:district": "士林區",
+    "addr:full": "111台北市士林區士東路100號",
+    "addr:housenumber": "100",
+    "addr:postcode": "111",
+    "addr:street": "士東路",
+    "amenity": "marketplace",
+    "building": "retail",
+    "name": "士東市場",
+    "toilets:wheelchair": "yes",
+    "wheelchair": "yes",
+    "wheelchair:description": "0"
+  }
+},
+{
+  "type": "way",
+  "id": 261197038,
+  "center": {
+    "lat": 25.0506930,
+    "lon": 121.5707605
+  },
+  "tags": {
+    "amenity": "marketplace",
+    "building": "retail",
+    "name": "南松市場"
+  }
+},
+{
+  "type": "way",
+  "id": 262526188,
+  "center": {
+    "lat": 25.0886045,
+    "lon": 121.5243694
+  },
+  "tags": {
+    "addr:city": "臺北市",
+    "addr:country": "TW",
+    "addr:district": "士林區",
+    "addr:full": "111臺北市士林區基河路101號",
+    "addr:housenumber": "101",
+    "addr:postcode": "111",
+    "addr:street": "基河路",
+    "alt_name:en": "Shilin Night Market",
+    "amenity": "marketplace",
+    "building": "retail",
+    "name": "士林市場",
+    "name:en": "Shilin Market",
+    "name:ja": "士林市場",
+    "name:zh": "士林市場",
+    "official_name": "公有士林市場",
+    "toilets:wheelchair": "yes",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 284937638,
+  "center": {
+    "lat": 25.0534132,
+    "lon": 121.5345368
+  },
+  "tags": {
+    "addr:city": "台北市",
+    "addr:country": "TW",
+    "addr:district": "中山區",
+    "addr:full": "台北市中山區四平街88號",
+    "addr:housenumber": "88",
+    "addr:street": "四平街",
+    "alt_name": "建國傳統市場",
+    "amenity": "marketplace",
+    "building": "retail",
+    "building:levels": "1",
+    "name": "建國市場",
+    "name:en": "Jianguo Market",
+    "name:nan": "Kiàn-kok Chhài-chhī-á",
+    "name:nan-Hant": "建國菜市仔",
+    "name:nan-Latn-pehoeji": "Kiàn-kok Chhài-chhī-á",
+    "name:nan-Latn-tailo": "Kiàn-kok Tshài-tshī-á",
+    "name:zh": "建國市場"
+  }
+},
+{
+  "type": "way",
+  "id": 288321721,
+  "center": {
+    "lat": 25.0396589,
+    "lon": 121.5012111
+  },
+  "tags": {
+    "amenity": "marketplace",
+    "name": "直興市場"
+  }
+},
+{
+  "type": "way",
+  "id": 301053224,
+  "center": {
+    "lat": 25.0707112,
+    "lon": 121.5213804
+  },
+  "tags": {
+    "addr:city": "台北市",
+    "addr:country": "TW",
+    "addr:district": "中山區",
+    "addr:full": "104台北市中山區玉門街1號",
+    "addr:housenumber": "1",
+    "addr:postcode": "104",
+    "addr:street": "玉門街",
+    "amenity": "marketplace",
+    "bench": "yes",
+    "building": "roof",
+    "layer": "1",
+    "name": "臺北花博農民市集"
+  }
+},
+{
+  "type": "way",
+  "id": 304943323,
+  "center": {
+    "lat": 25.0478556,
+    "lon": 121.5529987
+  },
+  "tags": {
+    "amenity": "marketplace",
+    "building": "commercial",
+    "name": "中崙市場臨時攤棚"
+  }
+},
+{
+  "type": "way",
+  "id": 309520980,
+  "center": {
+    "lat": 25.0643577,
+    "lon": 121.5236592
+  },
+  "tags": {
+    "alt_name": "雙城街夜市",
+    "alt_name:ja": "雙城夜市",
+    "alt_name:zh": "雙城街夜市",
+    "amenity": "marketplace",
+    "landuse": "commercial",
+    "name": "晴光市場",
+    "name:zh": "晴光市場",
+    "tourism": "attraction"
+  }
+},
+{
+  "type": "way",
+  "id": 309952156,
+  "center": {
+    "lat": 25.0190082,
+    "lon": 121.4975658
+  },
+  "tags": {
+    "amenity": "marketplace",
+    "building": "retail",
+    "name": "魚市場"
+  }
+},
+{
+  "type": "way",
+  "id": 311287578,
+  "center": {
+    "lat": 25.0345662,
+    "lon": 121.4960604
+  },
+  "tags": {
+    "amenity": "marketplace",
+    "building": "apartments",
+    "name": "台北鐘錶批發廣場"
+  }
+},
+{
+  "type": "way",
+  "id": 313565798,
+  "center": {
+    "lat": 25.0503765,
+    "lon": 121.5760590
+  },
+  "tags": {
+    "amenity": "marketplace",
+    "building": "retail",
+    "name": "松山市場",
+    "name:en": "Songshan market",
+    "name:ja": "松山市場",
+    "name:zh": "松山市場",
+    "wikidata": "Q60992442"
+  }
+},
+{
+  "type": "way",
+  "id": 332396718,
+  "center": {
+    "lat": 25.0548598,
+    "lon": 121.5423796
+  },
+  "tags": {
+    "amenity": "marketplace",
+    "building": "retail",
+    "name": "長春市場",
+    "name:en": "Changchun Market",
+    "name:zh": "長春市場"
+  }
+},
+{
+  "type": "way",
+  "id": 347314155,
+  "center": {
+    "lat": 25.0367330,
+    "lon": 121.5323647
+  },
+  "tags": {
+    "addr:city": "臺北市",
+    "addr:country": "TW",
+    "addr:district": "中正區",
+    "addr:full": "臺北市中正區新生南路一段134-1號",
+    "addr:housenumber": "134-1",
+    "addr:postcode": "100",
+    "addr:street": "新生南路一段",
+    "amenity": "marketplace",
+    "building": "retail",
+    "building:levels": "1",
+    "name": "新生市場"
+  }
+},
+{
+  "type": "way",
+  "id": 368435595,
+  "center": {
+    "lat": 25.0281260,
+    "lon": 121.5412126
+  },
+  "tags": {
+    "amenity": "marketplace",
+    "building": "retail",
+    "name": "安東市場"
+  }
+},
+{
+  "type": "way",
+  "id": 375327739,
+  "center": {
+    "lat": 25.1112360,
+    "lon": 121.5155441
+  },
+  "tags": {
+    "amenity": "marketplace",
+    "building": "retail",
+    "name": "石牌自強市場",
+    "name:en": "Shi-pai-zi-qiang Market",
+    "name:ja": "石牌自強市場（せきはいじきょういちば）",
+    "name:nan": "Chio̍h-pâi-chū-kiông-chhī-tiûnn",
+    "name:zh": "石牌自強市場"
+  }
+},
+{
+  "type": "way",
+  "id": 375327746,
+  "center": {
+    "lat": 25.1172896,
+    "lon": 121.5084892
+  },
+  "tags": {
+    "amenity": "marketplace",
+    "landuse": "retail",
+    "name": "金龍市場",
+    "name:en": "Jin-long Open-air Market",
+    "name:zh": "金龍市場"
+  }
+},
+{
+  "type": "way",
+  "id": 375486271,
+  "center": {
+    "lat": 25.0370261,
+    "lon": 121.5004466
+  },
+  "tags": {
+    "amenity": "marketplace",
+    "landuse": "retail",
+    "name": "青草巷",
+    "name:en": "Herb Alley",
+    "name:zh": "青草巷"
+  }
+},
+{
+  "type": "way",
+  "id": 375486272,
+  "center": {
+    "lat": 25.0383760,
+    "lon": 121.4984162
+  },
+  "tags": {
+    "amenity": "marketplace",
+    "landuse": "retail",
+    "name": "華西街観光夜市",
+    "name:en": "Huaxi Night Market",
+    "name:ja": "華西街観光夜市",
+    "name:zh": "華西街夜市",
+    "tourism": "attraction",
+    "wikidata": "Q5363313",
+    "wikipedia": "zh:華西街夜市",
+    "wikipedia:zh": "華西街夜市"
+  }
+},
+{
+  "type": "way",
+  "id": 375486277,
+  "center": {
+    "lat": 25.0378487,
+    "lon": 121.5005716
+  },
+  "tags": {
+    "amenity": "marketplace",
+    "landuse": "retail",
+    "name": "西昌街夜市"
+  }
+},
+{
+  "type": "way",
+  "id": 375486278,
+  "center": {
+    "lat": 25.0375681,
+    "lon": 121.4995425
+  },
+  "tags": {
+    "amenity": "marketplace",
+    "landuse": "retail",
+    "name": "佛具街",
+    "name:ja": "仏具街"
+  }
+},
+{
+  "type": "way",
+  "id": 380193236,
+  "center": {
+    "lat": 24.9878196,
+    "lon": 121.5545584
+  },
+  "tags": {
+    "amenity": "marketplace",
+    "name": "光明市場"
+  }
+},
+{
+  "type": "way",
+  "id": 380243370,
+  "center": {
+    "lat": 25.0820229,
+    "lon": 121.5191025
+  },
+  "tags": {
+    "amenity": "marketplace",
+    "building": "roof",
+    "building:levels": "1",
+    "name": "福華廣場"
+  }
+},
+{
+  "type": "way",
+  "id": 383493917,
+  "center": {
+    "lat": 25.0749797,
+    "lon": 121.5142501
+  },
+  "tags": {
+    "amenity": "marketplace",
+    "building": "retail",
+    "building:levels": "5",
+    "name": "大龍市場"
+  }
+},
+{
+  "type": "way",
+  "id": 396410905,
+  "center": {
+    "lat": 25.0555973,
+    "lon": 121.5151334
+  },
+  "tags": {
+    "alt_name": "寧夏環保夜市",
+    "amenity": "marketplace",
+    "full_name": "寧夏路夜市",
+    "landuse": "retail",
+    "name": "寧夏夜市",
+    "name:en": "Ningxia Night Market",
+    "name:zh": "寧夏夜市",
+    "opening_hours": "Mo-Su 17:30-01:00",
+    "tourism": "attraction",
+    "website": "https://nx-yes.tw/",
+    "wikidata": "Q16926585",
+    "wikipedia": "zh:寧夏路夜市"
+  }
+},
+{
+  "type": "way",
+  "id": 422832334,
+  "center": {
+    "lat": 25.0536296,
+    "lon": 121.5339908
+  },
+  "tags": {
+    "alt_name": "女人街",
+    "amenity": "marketplace",
+    "name": "四平商圈",
+    "tourism": "attraction"
+  }
+},
+{
+  "type": "way",
+  "id": 430628146,
+  "center": {
+    "lat": 25.0362834,
+    "lon": 121.5605090
+  },
+  "tags": {
+    "amenity": "marketplace",
+    "building": "retail",
+    "level": "1",
+    "name": "光復市場"
+  }
+},
+{
+  "type": "way",
+  "id": 431909695,
+  "center": {
+    "lat": 25.0812596,
+    "lon": 121.5912283
+  },
+  "tags": {
+    "alt_name": "菜市場",
+    "amenity": "marketplace",
+    "name": "湖光市場"
+  }
+},
+{
+  "type": "way",
+  "id": 457483394,
+  "center": {
+    "lat": 25.0298876,
+    "lon": 121.5553933
+  },
+  "tags": {
+    "alt_name": "通化夜市",
+    "alt_name:en": "Tonghua Night market",
+    "alt_name:zh": "通化夜市",
+    "amenity": "marketplace",
+    "landuse": "retail",
+    "name": "臨江街觀光夜市",
+    "name:en": "Linjiang Street Night Market",
+    "name:ko": "린장제 관광야시장",
+    "name:zh": "臨江街觀光夜市",
+    "tourism": "attraction",
+    "wikidata": "Q6727208",
+    "wikipedia": "zh:臨江街觀光夜市"
+  }
+},
+{
+  "type": "way",
+  "id": 464303500,
+  "center": {
+    "lat": 25.0664599,
+    "lon": 121.5368735
+  },
+  "tags": {
+    "addr:city": "臺北市",
+    "addr:country": "TW",
+    "addr:district": "中山區",
+    "addr:full": "104臺北市中山區民族東路410巷2弄20號",
+    "addr:full:en": "No. 20, Alley 2, Lane 410, Minzu E Rd, Zhongshan District, Taipei City, Taiwan 104",
+    "addr:housenumber": "20",
+    "addr:postcode": "104",
+    "addr:street": "民族東路410巷2弄",
+    "amenity": "marketplace",
+    "building": "retail",
+    "name": "臺北魚市",
+    "name:en": "Taipei Fish Market",
+    "name:ja": "台北魚市場",
+    "name:zh": "臺北魚市",
+    "opening_hours": "Mo-Su 07:00-20:00",
+    "wikidata": "Q16242253",
+    "wikipedia:en": "Taipei Fish Market"
+  }
+},
+{
+  "type": "way",
+  "id": 467739829,
+  "center": {
+    "lat": 25.0696268,
+    "lon": 121.5223743
+  },
+  "tags": {
+    "addr:city": "台北市",
+    "addr:country": "TW",
+    "addr:district": "中山區",
+    "addr:full": "104台北市中山區中山北路三段1號",
+    "addr:housenumber": "1",
+    "addr:postcode": "104",
+    "addr:street": "中山北路三段",
+    "amenity": "marketplace",
+    "building": "roof",
+    "building:levels": "1",
+    "layer": "1",
+    "name": "集食行樂",
+    "name:en": "Maji Maji",
+    "name:ja": "MAJI MAJI集食行楽",
+    "name:zh": "集食行樂",
+    "name:zh-Hans": "集食行乐",
+    "name:zh-Hant": "集食行樂",
+    "opening_hours": "Mo-Su 12:00-21:00",
+    "website": "http://majisquare.com"
+  }
+},
+{
+  "type": "way",
+  "id": 506764759,
+  "center": {
+    "lat": 25.0214115,
+    "lon": 121.5284932
+  },
+  "tags": {
+    "amenity": "marketplace",
+    "landuse": "retail",
+    "name": "龍泉市場"
+  }
+},
+{
+  "type": "way",
+  "id": 507996682,
+  "center": {
+    "lat": 25.0239252,
+    "lon": 121.5546803
+  },
+  "tags": {
+    "amenity": "marketplace",
+    "landuse": "retail"
+  }
+},
+{
+  "type": "way",
+  "id": 516455044,
+  "center": {
+    "lat": 25.0506837,
+    "lon": 121.5750698
+  },
+  "tags": {
+    "amenity": "marketplace",
+    "name": "饒河街觀光夜市",
+    "name:en": "Raohe Night Market",
+    "name:ja": "饒河街観光夜市",
+    "name:ko": "라오허제야시장",
+    "name:zh": "饒河街觀光夜市",
+    "short_name": "饒河夜市",
+    "tourism": "attraction"
+  }
+},
+{
+  "type": "way",
+  "id": 517754977,
+  "center": {
+    "lat": 25.0426084,
+    "lon": 121.5771881
+  },
+  "tags": {
+    "amenity": "marketplace",
+    "name": "虎林街市場",
+    "name:en": "Street Market",
+    "name:zh": "虎林街市場"
+  }
+},
+{
+  "type": "way",
+  "id": 517754978,
+  "center": {
+    "lat": 25.0430761,
+    "lon": 121.5774387
+  },
+  "tags": {
+    "amenity": "marketplace",
+    "building": "retail",
+    "name": "永春市場"
+  }
+},
+{
+  "type": "way",
+  "id": 520757105,
+  "center": {
+    "lat": 25.0359917,
+    "lon": 121.5024215
+  },
+  "tags": {
+    "alt_name": "新富市場",
+    "amenity": "marketplace",
+    "name": "東三水街市場"
+  }
+},
+{
+  "type": "way",
+  "id": 520781824,
+  "center": {
+    "lat": 25.0367548,
+    "lon": 121.4975520
+  },
+  "tags": {
+    "amenity": "marketplace",
+    "landuse": "retail",
+    "name": "廣州街夜市"
+  }
+},
+{
+  "type": "way",
+  "id": 525276550,
+  "center": {
+    "lat": 25.0447589,
+    "lon": 121.5753043
+  },
+  "tags": {
+    "amenity": "marketplace",
+    "building": "retail",
+    "building:levels": "1",
+    "name": "永吉市場"
+  }
+},
+{
+  "type": "way",
+  "id": 525280441,
+  "center": {
+    "lat": 25.0547245,
+    "lon": 121.5537774
+  },
+  "tags": {
+    "amenity": "marketplace",
+    "building": "retail",
+    "name": "公有龍城市場"
+  }
+},
+{
+  "type": "way",
+  "id": 540471530,
+  "center": {
+    "lat": 25.0013188,
+    "lon": 121.5367417
+  },
+  "tags": {
+    "amenity": "marketplace",
+    "name": "萬隆市場"
+  }
+},
+{
+  "type": "way",
+  "id": 552626175,
+  "center": {
+    "lat": 25.0438743,
+    "lon": 121.5126019
+  },
+  "tags": {
+    "amenity": "marketplace",
+    "name": "城中市場",
+    "name:nan": "Siâⁿ-lāi Chhài-chhī-á",
+    "name:nan-Hant": "城內菜市仔",
+    "name:nan-Latn-pehoeji": "Siâⁿ-lāi Chhài-chhī-á",
+    "name:nan-Latn-tailo": "Siânn-lāi Tshài-tshī-á",
+    "name:zh": "城中市場",
+    "name:zh-Hans": "城中市场",
+    "name:zh-Hant": "城中市場"
+  }
+},
+{
+  "type": "way",
+  "id": 568862627,
+  "center": {
+    "lat": 25.0862218,
+    "lon": 121.5904919
+  },
+  "tags": {
+    "amenity": "marketplace",
+    "name": "金龍路黃昏市場"
+  }
+},
+{
+  "type": "way",
+  "id": 593801638,
+  "center": {
+    "lat": 25.0285116,
+    "lon": 121.5060228
+  },
+  "tags": {
+    "amenity": "marketplace",
+    "landuse": "retail",
+    "name": "南機場夜市",
+    "name:en": "Nanjichang Night Market",
+    "name:ko": "난지창야시장",
+    "name:zh": "南機場夜市",
+    "tourism": "attraction"
+  }
+},
+{
+  "type": "way",
+  "id": 607954924,
+  "center": {
+    "lat": 25.0877016,
+    "lon": 121.5247930
+  },
+  "tags": {
+    "amenity": "marketplace",
+    "building": "retail",
+    "name": "陽明山農作物推集場"
+  }
+},
+{
+  "type": "way",
+  "id": 631205232,
+  "center": {
+    "lat": 25.0006934,
+    "lon": 121.5398765
+  },
+  "tags": {
+    "amenity": "marketplace",
+    "name": "萬隆小菜市場"
+  }
+},
+{
+  "type": "way",
+  "id": 663234410,
+  "center": {
+    "lat": 24.9814438,
+    "lon": 121.5575403
+  },
+  "tags": {
+    "amenity": "marketplace",
+    "building": "retail",
+    "name": "木新市場"
+  }
+},
+{
+  "type": "way",
+  "id": 679004546,
+  "center": {
+    "lat": 25.0132350,
+    "lon": 121.5351150
+  },
+  "tags": {
+    "amenity": "marketplace",
+    "landuse": "retail",
+    "name": "公館夜市",
+    "name:en": "Gongguan Night Market",
+    "name:nan": "Kong-koán Iā-chhī-á",
+    "name:nan-Hant": "公館夜市仔",
+    "name:nan-Latn-pehoeji": "Kong-koán Iā-chhī-á",
+    "name:nan-Latn-tailo": "Kong-kuán Iā-tshī-á",
+    "name:zh": "公館夜市"
+  }
+},
+{
+  "type": "way",
+  "id": 679004547,
+  "center": {
+    "lat": 25.0010854,
+    "lon": 121.5559724
+  },
+  "tags": {
+    "amenity": "marketplace",
+    "landuse": "retail",
+    "name": "興德市場"
+  }
+},
+{
+  "type": "way",
+  "id": 685311158,
+  "center": {
+    "lat": 25.0290465,
+    "lon": 121.4902153
+  },
+  "tags": {
+    "amenity": "marketplace",
+    "building": "commercial",
+    "name": "環南市場"
+  }
+},
+{
+  "type": "way",
+  "id": 685311162,
+  "center": {
+    "lat": 25.0297816,
+    "lon": 121.4889205
+  },
+  "tags": {
+    "amenity": "marketplace",
+    "building": "retail",
+    "name": "臺北市家禽批發市場"
+  }
+},
+{
+  "type": "way",
+  "id": 735264675,
+  "center": {
+    "lat": 25.0622665,
+    "lon": 121.5119567
+  },
+  "tags": {
+    "amenity": "marketplace",
+    "landuse": "retail",
+    "name": "大稻埕太平市場",
+    "name:zh": "大稻埕太平市場"
+  }
+},
+{
+  "type": "way",
+  "id": 738275212,
+  "center": {
+    "lat": 25.0804710,
+    "lon": 121.6019378
+  },
+  "tags": {
+    "addr:city": "台北市",
+    "addr:country": "TW",
+    "addr:district": "內湖區",
+    "addr:full": "114台北市內湖區大湖街168巷16號",
+    "addr:housenumber": "16",
+    "addr:postcode": "114",
+    "addr:street": "大湖街168巷",
+    "amenity": "marketplace",
+    "building": "retail",
+    "name": "鐵花棧町多肉文化市集"
+  }
+},
+{
+  "type": "way",
+  "id": 741034956,
+  "center": {
+    "lat": 25.0388972,
+    "lon": 121.5845889
+  },
+  "tags": {
+    "amenity": "marketplace",
+    "landuse": "retail",
+    "name": "福德菜市場"
+  }
+},
+{
+  "type": "way",
+  "id": 773559105,
+  "center": {
+    "lat": 24.9886906,
+    "lon": 121.5691631
+  },
+  "tags": {
+    "addr:city": "臺北市",
+    "addr:country": "TW",
+    "addr:district": "文山區",
+    "addr:floor": "1;2",
+    "addr:full": "11650臺北市保儀路13巷3號1、2樓",
+    "addr:housenumber": "3",
+    "addr:postcode": "11650",
+    "addr:street": "保儀路13巷",
+    "amenity": "marketplace",
+    "building": "retail",
+    "name": "木柵市場"
+  }
+},
+{
+  "type": "way",
+  "id": 773594707,
+  "center": {
+    "lat": 25.0651735,
+    "lon": 121.5402930
+  },
+  "tags": {
+    "alt_name": "榮星市場",
+    "amenity": "marketplace",
+    "landuse": "retail",
+    "name": "榮星攤販集中場"
+  }
+},
+{
+  "type": "way",
+  "id": 922810412,
+  "center": {
+    "lat": 25.0590636,
+    "lon": 121.5207759
+  },
+  "tags": {
+    "amenity": "marketplace",
+    "check_date:opening_hours": "2023-04-24",
+    "name": "雙連菜市場",
+    "opening_hours": "PH,Mo-Su 05:00-12:00",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 957813134,
+  "center": {
+    "lat": 25.0878948,
+    "lon": 121.5095774
+  },
+  "tags": {
+    "amenity": "marketplace",
+    "name": "社中街攤販集中場"
+  }
+},
+{
+  "type": "way",
+  "id": 1022797465,
+  "center": {
+    "lat": 25.0147086,
+    "lon": 121.4954873
+  },
+  "tags": {
+    "amenity": "marketplace",
+    "building": "yes",
+    "name": "萬大漁市中繼市場",
+    "name:zh": "萬大漁市中繼市場",
+    "name:zh-Hans": "万大渔市中继市场",
+    "name:zh-Hant": "萬大漁市中繼市場"
+  }
+},
+{
+  "type": "way",
+  "id": 1079433870,
+  "center": {
+    "lat": 25.0340607,
+    "lon": 121.5389856
+  },
+  "tags": {
+    "amenity": "marketplace",
+    "building": "retail",
+    "building:levels": "2",
+    "name": "信義市場"
+  }
+},
+{
+  "type": "way",
+  "id": 1105150871,
+  "center": {
+    "lat": 25.0177750,
+    "lon": 121.4973279
+  },
+  "tags": {
+    "amenity": "marketplace",
+    "building": "yes",
+    "name": "第一果菜批發市場",
+    "name:zh": "第一果菜批發市場",
+    "name:zh-Hans": "第一果菜批发市场",
+    "name:zh-Hant": "第一果菜批發市場"
+  }
+},
+{
+  "type": "way",
+  "id": 1120725602,
+  "center": {
+    "lat": 25.0206403,
+    "lon": 121.5556404
+  },
+  "tags": {
+    "alt_name": "白蘭市場;安居市場",
+    "amenity": "marketplace",
+    "landuse": "retail",
+    "name": "安居街9巷攤販集中場",
+    "opening_hours": "07:00-14:00",
+    "operator": "臺北市市場處"
+  }
+},
+{
+  "type": "way",
+  "id": 1376486000,
+  "center": {
+    "lat": 25.0348370,
+    "lon": 121.5268543
+  },
+  "tags": {
+    "amenity": "marketplace",
+    "name": "東門市場",
+    "name:ja": "東門市場",
+    "name:zh": "東門市場"
+  }
+},
+{
+  "type": "relation",
+  "id": 17934958,
+  "center": {
+    "lat": 25.0459245,
+    "lon": 121.5265761
+  },
+  "tags": {
+    "addr:city": "臺北市",
+    "addr:country": "TW",
+    "addr:district": "中正區",
+    "addr:full": "100臺北市中正區北平東路31號",
+    "addr:housenumber": "31",
+    "addr:postcode": "100",
+    "addr:street": "北平東路",
+    "amenity": "marketplace",
+    "landuse": "retail",
+    "name": "希望廣場農民市集",
+    "name:en": "Taipei Hope Plaza",
+    "name:zh": "希望廣場農民市集",
+    "opening_hours": "Sa 10:00-17:00; Su 10:00-18:00",
+    "organic": "yes",
+    "type": "multipolygon",
+    "url": "https://www.ehope.org.tw/"
+  }
+}
+
+  ]
+}
