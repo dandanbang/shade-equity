@@ -1,8 +1,8 @@
 -- 一樹同仁 citizen verification store. Paste into Supabase → SQL Editor → Run.
 create table if not exists public.verifications (
   id bigint generated always as identity primary key,
-  city text not null default 'taipei',
-  site_id text not null,          -- e.g. p305123_2770123 (TWD97 m); stable across data refreshes
+  city text not null default 'taipei' check (length(city) <= 32),
+  site_id text not null check (length(site_id) <= 40),          -- e.g. p305123_2770123 (TWD97 m); stable across data refreshes
   verdict text not null check (verdict in ('empty', 'tree', 'no')),
   client_id uuid not null,            -- random per-browser id, no personal data
   created_at timestamptz not null default now()

@@ -1,2 +1,2 @@
-// Public (anon) Supabase settings. Leave blank to keep votes in this browser only.
-window.SHADE_CONFIG = { city: 'taipei', supabaseUrl: 'https://cglkgrhwvfflgnixywnl.supabase.co', supabaseAnonKey: '' };
+// Public (anon) Supabase settings — safe to publish: RLS allows only read + insert. Blank = votes stay in this browser.
+window.SHADE_CONFIG = { city: 'taipei', supabaseUrl: 'https://cglkgrhwvfflgnixywnl.supabase.co', supabaseAnonKey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNnbGtncmh3dmZmbGduaXh5d25sIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTE4OTE5ODQsImV4cCI6MjEwNzQ2Nzk4NH0.f0pY9jg1vqOMhgjsa9dnaBpCJSW6tqpWC-E22XY9M2g' };
