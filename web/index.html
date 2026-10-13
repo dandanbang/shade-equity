@@ -2,69 +2,89 @@
 <html lang="zh-Hant">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>一樹同仁 · 台北樹蔭地圖</title>
-<meta name="description" content="把台北移除的 3,164 棵樹種回來：先種在最需要樹蔭的地方。開源、可驗證。">
+<meta name="description" content="去年台北移除了 3,164 棵樹。該種回哪裡？先種在最熱、最需要樹蔭的里，並一起用街景修正市府資料。開源。">
+<meta property="og:type" content="website">
+<meta property="og:title" content="去年台北移除了 3,164 棵樹，該種回哪裡？">
+<meta property="og:description" content="同樣的樹，先種在最需要的里，3 倍的樹會落在最熱、最缺樹蔭的地方。點開看你住的里。">
+<meta property="og:image" content="https://dandanbang.github.io/shade-equity/og.png">
+<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta property="og:url" content="https://dandanbang.github.io/shade-equity/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#f6f4ef">
+<link rel="apple-touch-icon" href="icon.png">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌳</text></svg>">
 <link rel="stylesheet" href="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.css">
 <link rel="stylesheet" href="style.css">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌳</text></svg>">
 </head>
 <body>
-<div id="map"></div>
+<div id="map" aria-label="台北各里樹蔭地圖"></div>
 
 <section id="hero" class="card">
   <p class="eyebrow">一樹同仁 · 台北樹蔭地圖</p>
-  <h1>去年，台北移除了 <b>3,164</b> 棵樹。</h1>
-  <p class="lede">市府圖資有 <b id="empty-count">—</b> 個「沒有樹」的樹穴。我們用街景抽查 30 個：<b>只有 4 個真的空著</b>。<br>
-  先一起修好資料，再把樹種回最熱、最老、最需要的里。</p>
+  <h1>去年，台北移除了<br><b>3,164</b> 棵樹。</h1>
+  <p class="lede">該種回哪裡？按下面的按鈕看答案；點任何一個里，看它為什麼需要樹蔭。</p>
+  <button id="btn-plant" class="primary" disabled>載入地圖中…</button>
 
-  <div class="seg" role="tablist">
-    <button id="btn-equity" role="tab" class="on">需要優先種</button>
-    <button id="btn-even" role="tab">平均種</button>
+  <div id="result" hidden>
+    <p class="big"><b>3 倍</b>的樹種到最需要的里</p>
+    <p class="small" id="mode-line"></p>
+    <div id="compare">
+      <div class="stat"><small>種在最需要的 20% 里</small><span id="s-share"></span><em id="s-share-vs"></em></div>
+      <div class="stat"><small>種下處比全市平均熱</small><span id="s-heat"></span><em id="s-heat-vs"></em></div>
+      <div class="stat"><small>種下處所得中位數</small><span id="s-inc"></span><em id="s-inc-vs"></em></div>
+    </div>
   </div>
-  <p id="mode-desc" class="small desc"></p>
-  <button id="btn-plant" class="primary">種回 3,164 棵 ▶</button>
-  <p id="crowd" class="small"></p>
-  <p class="small links"><a href="about.html">這是什麼？怎麼用？方法與資料 →</a></p>
 
-  <p id="compare-title" class="small" hidden></p>
-  <div id="compare" hidden>
-    <div class="stat"><span id="s-share">—</span><small>種在最需要的 20% 里</small></div>
-    <div class="stat"><span id="s-heat">—</span><small>種下處平均地表高溫</small></div>
-    <div class="stat"><span id="s-inc">—</span><small>種下處所得中位數</small></div>
+  <div class="find">
+    <input id="search" list="li-list" placeholder="找我的里（例如：頂碩里）" aria-label="找我的里" autocomplete="off">
+    <datalist id="li-list"></datalist>
   </div>
+  <p class="small links"><span id="crowd"></span><a href="about.html">方法與資料 →</a></p>
 </section>
 
-<aside id="panel" class="card" hidden>
+<aside id="panel" class="card" hidden aria-label="里資訊">
+  <div class="grab" aria-hidden="true"></div>
   <button id="close" aria-label="關閉">×</button>
   <p class="eyebrow" id="p-dist"></p>
   <h2 id="p-name"></h2>
   <div class="score"><span id="p-tes"></span><small>/100 樹蔭公平分數</small></div>
-  <p id="p-verdict" class="lede"></p>
-  <p class="q">為什麼這裡需要樹蔭？</p>
+  <p id="p-verdict" class="verdict"></p>
+
+  <p class="q" id="p-why-title">為什麼這裡需要樹蔭？</p>
   <div id="p-bars"></div>
-  <dl id="p-facts"></dl>
-  <h3>建議種樹點 <small id="p-plan-n"></small></h3>
-  <div class="howto small">
-    <b>幫忙確認，一個點 30 秒：</b>
-    <ol><li>按「看街景」，看那個位置現在的樣子</li>
-    <li>回來按：空的、已經有樹、或不能種（例如被柱子、機車格、變電箱擋住）</li></ol>
-    市府資料常常不準（街景抽查 30 個，只有 4 個真的空）。每一筆確認都會讓這份清單更接近能直接施工的版本。
+
+  <section id="p-sites">
+    <h3>種樹點 <small id="p-plan-n"></small></h3>
+    <p class="howto small" id="p-howto">幫忙確認：<b>看街景 → 回來按一個</b>，一個點 30 秒。市府資料常不準，每一筆都讓清單更接近能施工。</p>
+    <div id="p-pits"></div>
+    <button id="p-more" class="ghost" hidden></button>
+  </section>
+
+  <div class="actions">
+    <button id="p-share" class="ghost">分享這個里</button>
+    <button id="p-csv" class="ghost">下載施工清單</button>
   </div>
-  <ol id="p-pits"></ol>
-  <button id="p-csv" class="ghost">下載施工清單 CSV</button>
+  <details><summary>更多數字</summary><dl id="p-facts"></dl></details>
 </aside>
 
 <div id="legend" class="card small">
   <div class="ramp"></div>
   <div class="ramp-labels"><span>最缺樹蔭</span><span>已達標</span></div>
-  <div class="keys"><span><i class="dot fill"></i>建議優先確認／種樹</span><span><i class="dot ring"></i>可新增樹穴</span><span><i class="dot gray"></i>其他疑似空樹穴</span></div>
+  <div class="keys">
+    <span><i class="dot fill"></i>建議種樹點</span>
+    <span><i class="dot ring"></i>新增樹穴（需現勘）</span>
+    <span><i class="dot gray"></i>空樹穴（待確認）</span>
+  </div>
 </div>
+<div id="legend-mini" class="small"><i class="sw"></i>越橘越缺樹蔭 <i class="dot fill"></i>種樹點</div>
 
 <footer class="small">
-  資料：臺北市政府開放資料（行道樹、公園樹木、人行道樹穴）、內政部村里界與人口、財政部村里所得、Landsat 地表溫度、Meta/WRI 1m 樹冠高度。
-  方法：American Forests Tree Equity Score · 3-30-300。<a href="about.html">方法與資料</a> · <a href="https://github.com/dandanbang/shade-equity">開源原始碼</a>
+  資料：臺北市政府開放資料、內政部、財政部、Landsat、Meta/WRI 樹冠高度。方法：Tree Equity Score。
+  <a href="about.html">方法與資料</a> · <a href="https://github.com/dandanbang/shade-equity">開源原始碼</a>
 </footer>
+<div id="toast" role="status" aria-live="polite" hidden></div>
 
 <script src="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.js"></script>
 <script src="config.js"></script>

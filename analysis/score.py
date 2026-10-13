@@ -126,7 +126,9 @@ print(v.nsmallest(12, 'TES')[['TOWNNAME', 'VILLNAME', 'pop', 'canopy', 'lst_anom
 cols = ['VILLCODE', 'TOWNNAME', 'VILLNAME', 'pop', 'age65', 'age_u12', 'dep_ratio', 'median_income', 'lst_mean_c', 'lst_anomaly_c',
         'canopy', 'street_trees', 'poi_per_km2', 'empty_pits', 'new_spots', 'sites', 'E', 'gap', 'TES', 'alloc', 'even'] + NEED
 out = v[cols + ['geometry']].copy(); out['geometry'] = out.simplify(5)
-out.round(4).to_crs(4326).to_file(D+'li_score.geojson', driver='GeoJSON')
+web_cols = ['VILLCODE', 'TOWNNAME', 'VILLNAME', 'pop', 'age65', 'dep_ratio', 'median_income', 'lst_mean_c', 'canopy',
+            'street_trees', 'poi_per_km2', 'empty_pits', 'new_spots', 'TES', 'geometry']  # only what the web app reads
+out[web_cols].round(4).to_crs(4326).to_file(D+'li_score.geojson', driver='GeoJSON', layer_options={'COORDINATE_PRECISION': 6})
 e = empty.to_crs(4326); e['lon'] = e.geometry.x.round(6); e['lat'] = e.geometry.y.round(6)
 e[['site_id', 'VILLCODE', 'kind', 'lon', 'lat', 'poi_dist_m', 'canopy_15m', 'plan_rank', 'even_rank']].to_csv(D+'empty_pits.csv', index=False)
 json.dump(summary, open(D+'summary.json', 'w'), ensure_ascii=False, indent=1)
