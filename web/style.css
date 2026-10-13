@@ -78,3 +78,9 @@ footer a { color: var(--green); }
 .howto { background: var(--green-soft); border-radius: 10px; padding: 10px 12px; margin-bottom: 8px; color: #2c3a33; }
 .howto ol { margin: 4px 0 6px; padding-left: 18px; }
 .tally { font-size: 12px; color: var(--green); margin-top: 2px; }
+.q { font-size: 13px; font-weight: 600; margin: 14px 0 4px; }
+.f { display: flex; gap: 10px; padding: 9px 0; border-top: 1px solid var(--line); }
+.f .ic { font-size: 19px; width: 24px; text-align: center; }
+.f .t { flex: 1; } .f .t b { font-size: 14px; } .f .t div { font-size: 12.5px; color: #4b5550; line-height: 1.45; }
+.chip { font-size: 11.5px; font-weight: 700; border-radius: 999px; padding: 2px 9px; height: fit-content; white-space: nowrap; }
+.chip.hi { background: var(--sun-soft); color: #c2410c; } .chip.mid { background: #fdf3dc; color: #b7791f; } .chip.lo { background: #efefec; color: #8a8f8c; }

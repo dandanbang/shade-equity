@@ -1,8 +1,5 @@
 // 一樹同仁 — Taipei shade-equity replant planner. Static, no build step.
 const N_TREES = 3164;
-const FACTORS = [
-  ['n_heat', '地表高溫'], ['n_dep', '老人與小孩比例'], ['n_income', '所得偏低'], ['n_foot', '步行人流'],
-];
 const fmt = n => Number(n).toLocaleString('zh-TW');
 const $ = id => document.getElementById(id);
 const parseCsv = t => { const [h, ...rows] = t.trim().split('\n'), k = h.split(',');
@@ -15,7 +12,9 @@ const remote = !!(CFG.supabaseUrl && CFG.supabaseAnonKey);
 const clientId = (() => { try { let id = localStorage.getItem('client_id'); if (!id) { id = crypto.randomUUID(); localStorage.setItem('client_id', id); } return id; } catch { return crypto.randomUUID(); } })();
 let votes = {}; // site_id -> {empty, tree, no}
 const sb = (path, opt = {}) => fetch(`${CFG.supabaseUrl}/rest/v1/${path}`, { ...opt,
-  headers: { apikey: CFG.supabaseAnonKey, Authorization: `Bearer ${CFG.supabaseAnonKey}`, 'Content-Type': 'application/json', ...(opt.headers || {}) } });
+  headers: { apikey: CFG.supabaseAnonKey, 'Content-Type': 'application/json', ...(opt.headers || {}),
+    // legacy anon keys are JWTs and also go in Authorization; new sb_publishable_ keys go in apikey only
+    ...(CFG.supabaseAnonKey.startsWith('eyJ') ? { Authorization: `Bearer ${CFG.supabaseAnonKey}` } : {}) } });
 const store = {
   get(k) { try { return JSON.parse(localStorage.getItem('verify') || '{}')[k]; } catch { return undefined; } },
   set(k, v) {
@@ -137,6 +136,25 @@ function showCompare() {
   $('compare').hidden = false; $('compare-title').hidden = false;
 }
 
+// --- 四個指標：plain words + need level, biggest reason first
+const pctNeed = (p, k, up) => { const all = lis.features.map(x => x.properties[k]).filter(Number.isFinite);
+  return Math.round(all.filter(v => (up ? v < p[k] : v > p[k])).length / all.length * 100); };
+const median = k => { const a = lis.features.map(x => x.properties[k]).filter(Number.isFinite).sort((x, y) => x - y); return a[a.length >> 1]; };
+const LEVEL = n => (n >= 75 ? ['hi', '高需求'] : n >= 50 ? ['mid', '中'] : ['lo', '一般']);
+const wan = k => `${Math.round(k / 10)} 萬`;  // income is in 千元
+function factorRows(p) {
+  const heat = pctNeed(p, 'lst_mean_c', true), inc = pctNeed(p, 'median_income', false);
+  const foot = pctNeed(p, 'poi_per_km2', true), dep = pctNeed(p, 'dep_ratio', true);
+  const rows = [
+    [heat, '🌡️', ['非常熱', '偏熱', '熱度：一般'], `夏天地表 ${Math.round(p.lst_mean_c)}°C，${heat >= 99 ? '全台北最熱的里之一' : `比 ${heat}% 的里熱`}`],
+    [inc, '💰', ['所得較低', '所得略低', '所得：一般'], inc >= 50 ? `中位數 ${wan(p.median_income)}，比 ${inc}% 的里低` : `中位數 ${wan(p.median_income)}（台北中位數 ${wan(median('median_income'))}）`],
+    [foot, '🚶', ['人潮多', '人潮中等', '人潮：較少'], `公車站、捷運、學校、市場密度比 ${foot}% 的里高`],
+    [dep, '👵', ['老人小孩多', '老人小孩略多', '老人小孩：一般'], `每 100 位大人照顧 ${Math.round(p.dep_ratio * 100)} 位老人小孩（台北中位數 ${Math.round(median('dep_ratio') * 100)}）`],
+  ].sort((x, y) => y[0] - x[0]);
+  return rows.map(([n, ic, names, line]) => { const [cls, tag] = LEVEL(n), name = names[cls === 'hi' ? 0 : cls === 'mid' ? 1 : 2];
+    return `<div class="f"><div class="ic">${ic}</div><div class="t"><b>${name}</b><div>${line}</div></div><span class="chip ${cls}">${tag}</span></div>`; }).join('');
+}
+
 // --- 里 panel
 function select(code, fly = true) {
   const f = lis.features.find(x => x.properties.VILLCODE === code); if (!f) return;
@@ -150,15 +168,7 @@ function select(code, fly = true) {
   $('p-tes').style.color = p.TES < 45 ? '#b8380c' : p.TES < 70 ? '#c27a12' : '#2f7d4f';
   $('p-verdict').textContent = rank <= 46 ? `全台北最缺樹蔭的 10%（第 ${rank} / 456 里）`
     : p.TES >= 90 ? `樹蔭充足（第 ${rank} / 456 里）` : `第 ${rank} / 456 里（1 = 最缺樹蔭）`;
-  const med = k => { const a = lis.features.map(x => x.properties[k]).filter(Number.isFinite).sort((x, y) => x - y); return a[a.length >> 1]; };
-  const why = {
-    n_heat: `夏天地表約 ${p.lst_mean_c.toFixed(0)}°C，全市各里中位數 ${med('lst_mean_c').toFixed(0)}°C`,
-    n_dep: `每 100 位 18–64 歲的人，要照顧 ${Math.round(p.dep_ratio * 100)} 位老人與小孩（中位數 ${Math.round(med('dep_ratio') * 100)}）`,
-    n_income: `所得中位數 ${fmt(p.median_income)}k，全市各里中位數 ${fmt(med('median_income'))}k`,
-    n_foot: `每平方公里 ${Math.round(p.poi_per_km2)} 個公車站、捷運出口、學校、市場、醫療與長照據點（中位數 ${Math.round(med('poi_per_km2'))}）`,
-  };
-  $('p-bars').innerHTML = FACTORS.map(([k, label]) =>
-    `<div class="bar"><div class="row"><span>${label}</span><span>${Math.round(p[k] * 100)}</span></div><div class="track"><div class="fill" style="width:${p[k] * 100}%"></div></div><div class="why">${why[k]}</div></div>`).join('');
+  $('p-bars').innerHTML = factorRows(p);
   const facts = [
     ['人口', fmt(p.pop)], ['65 歲以上', `${(p.age65 / p.pop * 100).toFixed(1)}%`],
     ['樹冠覆蓋（3 m 以上，目標 30%）', `${(p.canopy * 100).toFixed(1)}%`], ['夏季地表溫度（衛星）', `${p.lst_mean_c.toFixed(1)}°C`],

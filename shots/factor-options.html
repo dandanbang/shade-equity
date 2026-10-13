@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="zh-Hant"><head><meta charset="utf-8"><title>四個指標：三種設計</title>
+<style>
+:root{--ink:#1d2320;--muted:#66706b;--line:#e3e0d8;--hi:#c2410c;--hi-soft:#fdebe1;--mid:#b7791f;--mid-soft:#fdf3dc;--lo:#8a8f8c;--lo-soft:#efefec;--green:#2f7d4f}
+body{margin:0;background:#f6f4ef;color:var(--ink);font:15px/1.5 -apple-system,"PingFang TC","Noto Sans TC",sans-serif;padding:24px}
+h1{font-size:20px;margin:0 0 4px} .sub{color:var(--muted);margin:0 0 20px}
+.grid{display:grid;grid-template-columns:repeat(3,360px);gap:24px;align-items:start}
+.opt h2{font-size:15px;margin:0 0 8px} .opt p.note{font-size:13px;color:var(--muted);margin:8px 0 0}
+.card{background:#fff;border-radius:16px;box-shadow:0 8px 30px rgba(20,30,25,.12);padding:20px 22px}
+.eyebrow{font-size:12px;color:var(--muted)} .name{font-size:24px;font-weight:700;margin:0}
+.score{display:flex;align-items:baseline;gap:6px;margin:6px 0 2px}.score b{font-size:40px;color:var(--hi);line-height:1}.score small{color:var(--muted)}
+.q{font-size:13px;font-weight:600;margin:14px 0 6px}
+/* A */
+.f{display:flex;gap:10px;padding:9px 0;border-top:1px solid var(--line)}
+.ic{font-size:20px;width:26px;text-align:center}
+.f .t{flex:1}.f .t b{font-size:14px}.f .t div{font-size:12.5px;color:#4b5550}
+.chip{font-size:11.5px;font-weight:700;border-radius:999px;padding:2px 9px;height:fit-content;white-space:nowrap}
+.chip.hi{background:var(--hi-soft);color:var(--hi)}.chip.mid{background:var(--mid-soft);color:var(--mid)}.chip.lo{background:var(--lo-soft);color:var(--lo)}
+/* B */
+.s{padding:10px 0;border-top:1px solid var(--line)}
+.s .top{display:flex;justify-content:space-between;font-size:14px}.s .top span{font-size:12.5px;color:#4b5550}
+.strip{position:relative;height:8px;border-radius:4px;margin:10px 0 4px;background:linear-gradient(90deg,#e9ece9,#f6d2bf)}
+.strip.inv{background:linear-gradient(90deg,#f6d2bf,#e9ece9)}
+.med{position:absolute;top:-4px;width:2px;height:16px;background:#9aa19d}
+.dot{position:absolute;top:-5px;width:18px;height:18px;margin-left:-9px;border-radius:50%;border:3px solid #fff;box-shadow:0 1px 4px rgba(0,0,0,.3)}
+.ends{display:flex;justify-content:space-between;font-size:11px;color:var(--muted)}
+/* C */
+.because{font-size:16px;line-height:1.7;margin:12px 0 4px}
+.because .k{font-weight:700;color:var(--hi)}
+.minor{font-size:13px;color:var(--muted)}
+details{margin-top:10px;font-size:13px}summary{color:var(--green);cursor:pointer}
+</style></head><body>
+<h1>四個指標：三種設計</h1>
+<p class="sub">都用真實資料，萬華區頂碩里。共同改變：拿掉 0–100 分數，改說「這個里跟台北其他里比起來怎樣」，用紅 / 黃 / 灰表示需求高低。</p>
+<div class="grid">
+
+<div class="opt"><h2>A · 一句話＋等級標籤（推薦）</h2>
+<div class="card"><div class="eyebrow">萬華區</div><p class="name">頂碩里</p>
+<div class="score"><b>27</b><small>/100 樹蔭公平分數 · 全台北第 2 缺樹蔭</small></div>
+<p class="q">為什麼這裡需要樹蔭？</p>
+<div class="f"><div class="ic">🌡️</div><div class="t"><b>非常熱</b><div>夏天地表 54°C，全台北最熱的里</div></div><span class="chip hi">高需求</span></div>
+<div class="f"><div class="ic">💰</div><div class="t"><b>所得較低</b><div>中位數 51 萬，比 89% 的里低</div></div><span class="chip hi">高需求</span></div>
+<div class="f"><div class="ic">🚶</div><div class="t"><b>人潮多</b><div>公車站、捷運、學校、市場密度比 90% 的里高</div></div><span class="chip hi">高需求</span></div>
+<div class="f"><div class="ic">👵</div><div class="t"><b>老人小孩：一般</b><div>每 100 位大人照顧 60 位老人小孩（台北中位數 63）</div></div><span class="chip lo">一般</span></div>
+</div>
+<p class="note">最快看懂。按需求高低排序，最重要的原因在最上面。標籤：前 25% = 高需求，25–50% = 中，其他 = 一般。</p></div>
+
+<div class="opt"><h2>B · 台北刻度尺</h2>
+<div class="card"><div class="eyebrow">萬華區</div><p class="name">頂碩里</p>
+<div class="score"><b>27</b><small>/100 樹蔭公平分數 · 全台北第 2 缺樹蔭</small></div>
+<p class="q">跟台北 456 個里比</p>
+<div class="s"><div class="top"><b>🌡️ 夏天地表溫度</b><span>54°C</span></div><div class="strip"><div class="med" style="left:73%"></div><div class="dot" style="left:100%;background:var(--hi)"></div></div><div class="ends"><span>最涼 31°C</span><span>中位數 48°C</span><span>最熱 54°C</span></div></div>
+<div class="s"><div class="top"><b>💰 所得中位數</b><span>51 萬</span></div><div class="strip inv"><div class="med" style="left:30%"></div><div class="dot" style="left:13%;background:var(--hi)"></div></div><div class="ends"><span>最低 41 萬</span><span>中位數 65 萬</span><span>最高 118 萬</span></div></div>
+<div class="s"><div class="top"><b>🚶 人潮（站點密度）</b><span>74 / km²</span></div><div class="strip"><div class="med" style="left:21%"></div><div class="dot" style="left:43%;background:var(--hi)"></div></div><div class="ends"><span>最少</span><span>中位數 35</span><span>最多 170</span></div></div>
+<div class="s"><div class="top"><b>👵 老人小孩比例</b><span>60 / 100 人</span></div><div class="strip"><div class="med" style="left:44%"></div><div class="dot" style="left:38%;background:var(--lo)"></div></div><div class="ends"><span>最低 41</span><span>中位數 63</span><span>最高 91</span></div></div>
+</div>
+<p class="note">最精確，看得到全台北的範圍。淡紅那一端代表更需要樹蔭。要多看幾秒。</p></div>
+
+<div class="opt"><h2>C · 只說原因</h2>
+<div class="card"><div class="eyebrow">萬華區</div><p class="name">頂碩里</p>
+<div class="score"><b>27</b><small>/100 樹蔭公平分數 · 全台北第 2 缺樹蔭</small></div>
+<p class="because">樹冠只有 <span class="k">2%</span>（目標 30%），<br>而且這裡<span class="k">全台北最熱</span>、<span class="k">所得較低</span>、<span class="k">人潮多</span>。</p>
+<p class="minor">老人小孩比例和台北一般差不多。</p>
+<details><summary>看詳細數字</summary><p>夏天地表 54°C（中位數 48°C）· 所得中位數 51 萬（65 萬）· 站點密度 74/km²（35）· 每 100 位大人照顧 60 位老人小孩（63）</p></details>
+</div>
+<p class="note">最像人說話，3 秒看懂。細節收起來。少了「一眼比較」的視覺。</p></div>
+
+</div></body></html>
