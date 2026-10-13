@@ -1,9 +1,11 @@
-# Contributing
+# 如何參與
 
-Thanks for helping put shade where people need it.
+謝謝你一起把樹蔭帶到最需要的地方。
 
-- **Fix the data, no code needed**: open the map, click a 里, check sites in Street View and mark them. Every verdict improves the work order.
-- **Report a problem**: open an issue with the 里, the site link and what you saw.
-- **Code**: fork, run `make all`, keep changes small, and include a before/after screenshot for UI changes. Each builder prints a sanity check (hottest/coolest 里, richest/poorest); keep it passing.
-- **New city**: add `data/fetch_<city>.sh` and a builder that outputs the same `data/derived/` files (li_score inputs: canopy, age, income, heat, POIs; sites). Open an issue first so we can agree on the adapter shape.
-- **Principles**: real data only; label anything estimated; every number on the site must trace to a file in `data/` and a script.
+- **不用寫程式也能幫忙**：打開地圖，點你的里，用街景確認種樹點，按「空的／已經有樹／不能種」。每一筆都讓施工清單更準。
+- **回報問題**：開一個 issue，附上里名、種樹點連結和你看到的情況（有「資料錯誤」範本）。
+- **改程式**：fork 之後執行 `make all`，改動盡量小；介面改動請附修改前後的截圖。每個資料產生程式都會印出合理性檢查（最熱／最涼的里、所得最高／最低的里），請保持通過。
+- **新增城市**：新增 `data/fetch_<城市>.sh`，以及輸出相同 `data/derived/` 檔案的產生程式（樹冠、年齡、所得、溫度、步行目的地、種樹點）。請先開 issue 討論格式。
+- **原則**：只用真實資料；估計值要標明；網站上的每個數字都要能追溯到 `data/` 裡的檔案和程式。
+
+*English: issues and PRs welcome in English too. Verify sites on the map, report data errors via the issue template, keep `make all` sanity checks passing, open an issue before adding a new city.*
