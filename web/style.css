@@ -81,6 +81,9 @@ dt { color: var(--muted); } dd { margin: 0; text-align: right; font-variant-nume
 .keys { display: grid; gap: 2px; margin-top: 8px; }
 .dot { display: inline-block; width: 10px; height: 10px; border-radius: 50%; margin-right: 6px; vertical-align: -1px; }
 .dot.fill { background: var(--green); } .dot.ring { border: 2px solid var(--green); } .dot.gray { background: #6b716e; }
+.dot.gone { border: 2px solid #8a2b0e; } .dot.small-pit { background: #a16207; border-radius: 2px; }
+#p-open .link { color: var(--green); background: none; border: 0; padding: 0; cursor: pointer; text-decoration: underline; min-height: 32px; font: inherit; }
+#p-open > .small { margin: 6px 0 0; color: var(--muted); } #p-open a { color: var(--green); }
 #legend-mini { display: none; }
 footer { position: absolute; z-index: 1; bottom: 8px; left: 262px; right: 420px; line-height: 1.4; background: rgba(255,255,255,.88); border-radius: 8px; padding: 4px 8px; }
 footer a { color: var(--green); }

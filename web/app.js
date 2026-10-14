@@ -1,12 +1,12 @@
 // 一樹同仁 — Taipei shade-equity replant planner. Static, no build step.
-const N_TREES = 3164;
+let N_TREES = 0, EXTRA = null, gone = [], smallPits = [];  // N_TREES = street trees gone from the city's records (analysis/extras.py)
 const TAIPEI = [[121.457, 24.96], [121.666, 25.21]];
 const fmt = n => Number(n).toLocaleString('zh-TW');
 const $ = id => document.getElementById(id);
 const q = new URLSearchParams(location.search);
 if (q.get('demo')) document.documentElement.classList.add('demo');
 const parseCsv = t => { const [h, ...rows] = t.trim().split('\n'), k = h.split(',');
-  return rows.map(r => Object.fromEntries(r.split(',').map((v, i) => [k[i], ['VILLCODE', 'kind', 'site_id'].includes(k[i]) ? v : +v]))); };
+  return rows.map(r => Object.fromEntries(r.split(',').map((v, i) => [k[i], ['VILLCODE', 'kind', 'site_id', 'TreeID', 'TreeType', 'Region'].includes(k[i]) ? v : +v]))); };
 const isPhone = () => innerWidth <= 720;
 let mode = 'equity', planted = false, lis = null, pits = [], summary = null, current = null, shown = 5;
 const rankField = () => (mode === 'equity' ? 'plan_rank' : 'even_rank');
@@ -66,9 +66,13 @@ Promise.all([
   fetch('data/li_score.geojson').then(r => r.json()),
   fetch('data/empty_pits.csv').then(r => r.text()),
   fetch('data/summary.json').then(r => r.json()),
+  fetch('data/extras_summary.json').then(r => r.json()),
+  fetch('data/trees_gone.csv').then(r => r.text()),
+  fetch('data/small_pits.csv').then(r => r.text()),
   new Promise(res => map.on('load', res)),
-]).then(([g, csv, s]) => {
-  lis = g; summary = s; pits = parseCsv(csv);
+]).then(([g, csv, s, x, gcsv, scsv]) => {
+  lis = g; summary = s; pits = parseCsv(csv); EXTRA = x; gone = parseCsv(gcsv); smallPits = parseCsv(scsv);
+  N_TREES = s.n_trees; $('h-gone').textContent = fmt(x.trees_gone);
   addLayers();
   map.fitBounds(TAIPEI, { padding: pad(), duration: 0 });
   $('li-list').innerHTML = lis.features.map(f => `<option value="${f.properties.TOWNNAME} ${f.properties.VILLNAME}">`).join('');
@@ -104,9 +108,21 @@ function addLayers() {
     'circle-radius': ['interpolate', ['linear'], ['zoom'], 10, 2.4, 14, 4.5, 18, 9],
     'circle-color': '#2f7d4f', 'circle-stroke-color': '#fff', 'circle-stroke-width': ['interpolate', ['linear'], ['zoom'], 10, 0.6, 16, 1.5] } });
 
-  const DOTS = ['pits-plan', 'spots', 'pits-empty'];
+  // transparency layers: trees in the 2024-11 records with no tree there now; big trees in undersized pits
+  const pts = a => ({ type: 'FeatureCollection', features: a.map(p => ({ type: 'Feature', geometry: { type: 'Point', coordinates: [p.lon, p.lat] }, properties: p })) });
+  map.addSource('gone', { type: 'geojson', data: pts(gone) });
+  map.addLayer({ id: 'gone', type: 'circle', source: 'gone', minzoom: 13.5, paint: {
+    'circle-radius': ['interpolate', ['linear'], ['zoom'], 14, 2.5, 18, 6], 'circle-color': 'rgba(255,255,255,.3)',
+    'circle-stroke-color': '#8a2b0e', 'circle-stroke-width': 1.5 } }, 'pits-plan');
+  map.addSource('small', { type: 'geojson', data: pts(smallPits) });
+  map.addLayer({ id: 'small', type: 'circle', source: 'small', minzoom: 13.5, paint: {
+    'circle-radius': ['interpolate', ['linear'], ['zoom'], 14, 2.5, 18, 6], 'circle-color': '#a16207',
+    'circle-stroke-color': '#fff', 'circle-stroke-width': 1 } }, 'pits-plan');
+
+  const DOTS = ['pits-plan', 'spots', 'pits-empty', 'gone', 'small'];
   map.on('click', e => {
     const dot = map.queryRenderedFeatures(e.point, { layers: DOTS })[0];
+    if (dot?.layer.id === 'gone' || dot?.layer.id === 'small') return popupTree(dot.properties, dot.layer.id);
     if (dot) return popupSite(dot.properties);
     const li = map.queryRenderedFeatures(e.point, { layers: ['li-fill'] })[0];
     if (li) select(li.properties.VILLCODE);
@@ -118,7 +134,7 @@ function addLayers() {
 }
 const planFilter = n => ['all', ['>=', ['get', rankField()], 0], ['<', ['get', rankField()], n]];
 
-// --- 種回 3,164 棵: one button. First press plants; after that it swaps to the other method for comparison.
+// --- 種回 N_TREES 棵: one button. First press plants; after that it swaps to the other method for comparison.
 $('btn-plant').onclick = () => { if (planted) mode = other(); plant(); };
 function plant() {
   planted = true; document.body.classList.add('planted');
@@ -137,7 +153,7 @@ function plant() {
 }
 function showResult() {
   const a = summary[mode], b = summary[other()], eq = summary.equity, ev = summary.even;
-  const ratio = Math.round(eq.share_top20pct / ev.share_top20pct);
+  const r = eq.share_top20pct / ev.share_top20pct, ratio = Math.abs(r - Math.round(r)) < 0.15 ? Math.round(r) : r.toFixed(1);
   $('result').querySelector('.big').innerHTML = mode === 'equity'
     ? `<b>${ratio} 倍</b>的樹種到最需要的里`
     : `平均種：只有 <b>${Math.round(ev.share_top20pct)}%</b> 種到最需要的里`;
@@ -183,12 +199,15 @@ function select(code, fly = true) {
   $('p-tes').textContent = Math.round(p.TES); $('p-tes').style.color = tesColor(p.TES);
   $('p-verdict').textContent = full ? `這裡的樹蔭已達標 🌳（全台北 ${nFull} 個里已達標）`
     : rank <= 46 ? `全台北最缺樹蔭的 10%（第 ${rank} 名 / 456 里）` : `缺樹蔭程度：第 ${rank} 名 / 456 里`;
+  $('p-checks').innerHTML = checkRows(p);
+  $('p-show-gone').parentElement.hidden = !p.trees_gone && !p.small_pits;
   $('p-why-title').textContent = full ? '其他指標' : '為什麼這裡需要樹蔭？';
   $('p-bars').innerHTML = factorRows(p);
   $('p-facts').innerHTML = [
     ['人口', fmt(p.pop)], ['65 歲以上', `${(p.age65 / p.pop * 100).toFixed(1)}%`],
     ['樹冠覆蓋（目標 30%）', `${(p.canopy * 100).toFixed(1)}%`], ['夏季地表溫度（衛星）', `${p.lst_mean_c.toFixed(1)}°C`],
     ['所得中位數', wan(p.median_income)], ['行道樹', `${fmt(p.street_trees)} 棵`], ['空樹穴（待確認）', fmt(p.empty_pits)], ['新增樹穴（需現勘）', fmt(p.new_spots)],
+    ['行道樹（2024-11 樹籍）', `${fmt(p.trees_2024)} 棵`], ['新出現的行道樹位置', `${fmt(p.trees_added)} 處`],
   ].map(([a, b]) => `<dt>${a}</dt><dd>${b}</dd>`).join('');
   list = pits.filter(x => x.VILLCODE === code && x[rankField()] >= 0).sort((a, b) => a[rankField()] - b[rankField()]);
   shown = 5; renderSites();
@@ -243,7 +262,7 @@ $('close').onclick = closePanel;
 addEventListener('keydown', e => { if (e.key === 'Escape' && !$('panel').hidden) closePanel(); });
 $('p-share').onclick = async () => {
   const url = `${location.origin}${location.pathname}?plant=1&li=${current}`;
-  const text = `${li.TOWNNAME}${li.VILLNAME}的樹蔭公平分數是 ${Math.round(li.TES)}/100。去年台北移除了 3,164 棵樹，該種回哪裡？`;
+  const text = `${li.TOWNNAME}${li.VILLNAME}：樹蔭公平分數 ${Math.round(li.TES)}/100${li.trees_gone ? `，市府資料兩年少了 ${fmt(li.trees_gone)} 棵行道樹` : ''}。你住的里呢？`;
   try { if (navigator.share) await navigator.share({ title: '一樹同仁', text, url }); else { await navigator.clipboard.writeText(`${text} ${url}`); toast('連結已複製'); } } catch {}
 };
 $('p-csv').onclick = () => {
@@ -256,6 +275,34 @@ $('p-csv').onclick = () => {
 function popupSite(p) {
   new maplibregl.Popup({ offset: 8, maxWidth: '240px' }).setLngLat([p.lon, p.lat])
     .setHTML(`<b>${KIND(p)}</b><br>周邊樹蔭 ${Math.round(p.canopy_15m * 100)}% · 離人潮 ${p.poi_dist_m} 公尺<br><a href="${sv(p)}" target="_blank" rel="noopener">看街景 ↗</a>`).addTo(map);
+}
+
+// --- 公開可查: records diff, undersized pits, park within 300 m
+function checkRows(p) {
+  const pct = p.trees_2024 ? Math.round(p.trees_gone / p.trees_2024 * 100) : 0, park = Math.round(p.park300 * 100);
+  const rows = [
+    ['🌳', p.trees_gone ? `兩年少了 ${fmt(p.trees_gone)} 棵行道樹` : '兩年內沒有行道樹消失',
+      p.trees_gone ? `2024 年 11 月樹籍有 ${fmt(p.trees_2024)} 棵，其中 ${pct}% 的位置今天沒有樹${p.trees_added ? `；另有 ${fmt(p.trees_added)} 處新出現的樹` : ''}` : `2024 年 11 月樹籍有 ${fmt(p.trees_2024)} 棵`,
+      pct >= 15 ? 'hi' : p.trees_gone ? 'mid' : 'lo', pct >= 15 ? '要追問' : p.trees_gone ? '可查' : '正常'],
+    ['📏', p.small_pits ? `${fmt(p.small_pits)} 棵大樹的樹穴偏小` : '沒有發現樹穴偏小的大樹',
+      '樹幹 30 公分以上、樹穴小於 1.2 × 1.2 公尺（公園處自己的建議）：根長不開，容易倒或被移除',
+      p.small_pits >= 10 ? 'hi' : p.small_pits ? 'mid' : 'lo', p.small_pits >= 10 ? '需要健檢' : p.small_pits ? '可改善' : '正常'],
+    ['🏞️', `${park}% 的範圍離公園不到 300 公尺`, '3-30-300 原則：每個家 300 公尺內要有一塊 0.5 公頃以上的綠地（直線距離估算）',
+      park < 50 ? 'hi' : park < 80 ? 'mid' : 'lo', park < 50 ? '缺綠地' : park < 80 ? '部分' : '達標'],
+  ];
+  return rows.map(([ic, b, line, cls, tag]) => `<div class="f"><div class="ic">${ic}</div><div class="t"><b>${b}</b><div>${line}</div></div><span class="chip ${cls}">${tag}</span></div>`).join('');
+}
+$('p-show-gone').onclick = () => {
+  const here = [...gone, ...smallPits].filter(t => t.VILLCODE === current); if (!here.length) return;
+  const xs = here.map(t => t.lon), ys = here.map(t => t.lat);
+  map.fitBounds([[Math.min(...xs), Math.min(...ys)], [Math.max(...xs), Math.max(...ys)]], { padding: pad(), maxZoom: 17, minZoom: 14.5 });
+};
+function popupTree(p, kind) {
+  const body = kind === 'gone'
+    ? `<b>2024 年有、現在沒有的樹</b><br>${p.TreeType} · 樹幹 ${p.Diameter} 公分 · ${p.Region}<br><small>2024-11 樹籍有這棵樹，今天 5 公尺內沒有樹。可能是移除、移植或資料變更。</small>`
+    : `<b>樹穴偏小的大樹</b><br>${p.TreeType} · 樹幹 ${p.Diameter} 公分 · 樹穴 ${p.pit_m2} m²<br><small>${p.Region}。小於公園處建議的 1.2 × 1.2 公尺。</small>`;
+  new maplibregl.Popup({ offset: 8, maxWidth: '260px' }).setLngLat([p.lon, p.lat])
+    .setHTML(`${body}<br><a href="${sv(p)}" target="_blank" rel="noopener">看街景 ↗</a>`).addTo(map);
 }
 
 // --- 找我的里

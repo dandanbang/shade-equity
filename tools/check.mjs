@@ -19,6 +19,9 @@ await p.click('.verify button >> nth=0'); await p.waitForTimeout(500);
 console.log('desktop msg:', await p.textContent('.site .msg'), '| pressed:', await p.getAttribute('.verify button >> nth=0', 'aria-pressed'));
 await shot(p, 'd-verified');
 // projector
+await p.goto(base + '?li=63000020005'); await p.waitForTimeout(5000); await shot(p, 'd-li-gone');
+console.log('checks:', (await p.textContent('#p-checks')).replace(/\s+/g, ' ').slice(0, 300));
+await p.click('#p-show-gone'); await p.waitForTimeout(2500); await shot(p, 'd-gone-map');
 p = await page(1280, 720); await p.goto(base + '?demo=1&plant=1'); await p.waitForTimeout(6000); await shot(p, 'p-planted');
 // phone
 p = await page(390, 844, true); await p.goto(base); await p.waitForFunction(() => !document.getElementById('btn-plant').disabled, null, { timeout: 20000 });

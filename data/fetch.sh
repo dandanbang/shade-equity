@@ -32,4 +32,9 @@ q 'nwr(area.a)[amenity~"^(school|kindergarten)$"];' schools
 q 'nwr(area.a)[amenity~"^(hospital|clinic)$"];' health
 q 'nwr(area.a)[amenity=social_facility]["social_facility:for"~"senior"];nwr(area.a)[amenity=nursing_home];' elderly
 q 'nwr(area.a)[amenity=marketplace];' markets
+# OSM park/garden polygons with geometry (for the "300" in 3-30-300)
+curl -fsS --max-time 200 -A "shade-hackathon/0.1" https://overpass-api.de/api/interpreter \
+  --data-urlencode 'data=[out:json][timeout:180];area["name"="臺北市"][admin_level=4]->.a;(way["leisure"~"^(park|garden|nature_reserve)$"](area.a);relation["leisure"~"^(park|garden|nature_reserve)$"](area.a););out geom tags;' -o osm_parks_geom.json
+# Street-tree file as archived by the Wayback Machine on 2024-11-21 (for the 2024 -> now records diff)
+mkdir -p archive && curl -fsSL -o archive/TaipeiTree_20241121.csv "https://web.archive.org/web/20241121065019id_/https://tppkl.blob.core.windows.net/blobfs/TaipeiTree.csv"
 echo done

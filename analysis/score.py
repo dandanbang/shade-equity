@@ -1,9 +1,10 @@
-"""Per-里 Taipei Tree Equity Score (TES-style) + 「種回 3,164 棵」 allocator.
+"""Per-里 Taipei Tree Equity Score (TES-style) + replant allocator: plant back the street trees that vanished from the city's records (analysis/extras.py).
 TES = 100*(1 - gap*E); gap = max(0,(goal-canopy)/goal); E = 0.1+0.9*mean(norm need factors).
 Method: American Forests treeequityscore.org/methodology, canopy goal 30% (3-30-300)."""
 import json, heapq, numpy as np, pandas as pd, geopandas as gpd, rasterio
 R, D = 'data/raw/', 'data/derived/'
-GOAL, CROWN_M2, N_TREES, EMPTY_BUF_M = 0.30, 30.0, 3164, 2.0
+GOAL, CROWN_M2, EMPTY_BUF_M = 0.30, 30.0, 2.0
+N_TREES = json.load(open(D+'extras_summary.json'))['trees_gone']  # 2024-11 -> now, no tree within 5 m
 rng = np.random.default_rng(42)
 
 v = gpd.read_file(R+'taipei_villages.geojson').to_crs(3826)
@@ -21,6 +22,7 @@ for f in ('li_income.csv', 'li_heat.csv'):
 
 # --- canopy: Meta/WRI ~1 m canopy height, share of ground with vegetation >= 3 m (data/make_canopy.py)
 v = v.merge(pd.read_csv(D+'li_canopy_meta.csv', dtype={'VILLCODE': str}), on='VILLCODE', how='left')
+v = v.merge(pd.read_csv(D+'li_extras.csv', dtype={'VILLCODE': str}), on='VILLCODE', how='left')  # analysis/extras.py
 v['canopy'] = v.canopy_meta
 with rasterio.open(D+'canopy_meta_taipei.tif') as src:
     _h = src.read(1); _tf, _crs = src.transform, src.crs
@@ -116,7 +118,7 @@ def report(col):
     return {'trees_to_top20pct_need_li': int(t[hi].sum()), 'share_top20pct': round(t[hi].sum() / t.sum() * 100, 1),
             'tree_wtd_E': round(w('E'), 3), 'tree_wtd_median_income_k': round(w('median_income')), 'tree_wtd_heat_anom_c': round(w('lst_anomaly_c'), 2),
             'li_reached': int((t > 0).sum()), 'age65_in_receiving_li': int(v.loc[t > 0, 'age65'].sum())}
-summary = {'equity': report('alloc'), 'even': report('even'), 'empty_pits': int((empty.kind == 'pit').sum()), 'new_spots': int((empty.kind == 'new').sum()),
+summary = {'n_trees': N_TREES, 'equity': report('alloc'), 'even': report('even'), 'empty_pits': int((empty.kind == 'pit').sum()), 'new_spots': int((empty.kind == 'new').sum()),
            'pits_total': len(pits), 'alloc_to_new_spots': int(empty[empty.planned].kind.eq('new').sum()),
            'city_TES_mean': round(v.TES.mean(), 1), 'li_TES_below_70': int((v.TES < 70).sum())}
 print(json.dumps(summary, ensure_ascii=False, indent=1))
@@ -124,10 +126,11 @@ print(v.nsmallest(12, 'TES')[['TOWNNAME', 'VILLNAME', 'pop', 'canopy', 'lst_anom
 
 # --- outputs (WGS84 for the web)
 cols = ['VILLCODE', 'TOWNNAME', 'VILLNAME', 'pop', 'age65', 'age_u12', 'dep_ratio', 'median_income', 'lst_mean_c', 'lst_anomaly_c',
-        'canopy', 'street_trees', 'poi_per_km2', 'empty_pits', 'new_spots', 'sites', 'E', 'gap', 'TES', 'alloc', 'even'] + NEED
+        'canopy', 'street_trees', 'poi_per_km2', 'empty_pits', 'new_spots', 'sites', 'E', 'gap', 'TES', 'alloc', 'even', 'trees_2024', 'trees_gone', 'trees_added', 'small_pits', 'park300'] + NEED
 out = v[cols + ['geometry']].copy(); out['geometry'] = out.simplify(5)
 web_cols = ['VILLCODE', 'TOWNNAME', 'VILLNAME', 'pop', 'age65', 'dep_ratio', 'median_income', 'lst_mean_c', 'canopy',
-            'street_trees', 'poi_per_km2', 'empty_pits', 'new_spots', 'TES', 'geometry']  # only what the web app reads
+            'street_trees', 'poi_per_km2', 'empty_pits', 'new_spots', 'TES',
+            'trees_2024', 'trees_gone', 'trees_added', 'small_pits', 'park300', 'geometry']  # only what the web app reads
 out[web_cols].round(4).to_crs(4326).to_file(D+'li_score.geojson', driver='GeoJSON', layer_options={'COORDINATE_PRECISION': 6})
 e = empty.to_crs(4326); e['lon'] = e.geometry.x.round(6); e['lat'] = e.geometry.y.round(6)
 e[['site_id', 'VILLCODE', 'kind', 'lon', 'lat', 'poi_dist_m', 'canopy_15m', 'plan_rank', 'even_rank']].to_csv(D+'empty_pits.csv', index=False)

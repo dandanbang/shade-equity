@@ -1,26 +1,27 @@
 {
+ "n_trees": 5472,
  "equity": {
-  "trees_to_top20pct_need_li": 1469,
-  "share_top20pct": 46.4,
-  "tree_wtd_E": 0.717,
-  "tree_wtd_median_income_k": 680,
-  "tree_wtd_heat_anom_c": 8.94,
-  "li_reached": 144,
-  "age65_in_receiving_li": 171510
+  "trees_to_top20pct_need_li": 2145,
+  "share_top20pct": 39.2,
+  "tree_wtd_E": 0.712,
+  "tree_wtd_median_income_k": 690,
+  "tree_wtd_heat_anom_c": 8.72,
+  "li_reached": 217,
+  "age65_in_receiving_li": 278470
  },
  "even": {
-  "trees_to_top20pct_need_li": 495,
-  "share_top20pct": 15.6,
-  "tree_wtd_E": 0.646,
-  "tree_wtd_median_income_k": 732,
-  "tree_wtd_heat_anom_c": 6.15,
-  "li_reached": 376,
-  "age65_in_receiving_li": 512081
+  "trees_to_top20pct_need_li": 858,
+  "share_top20pct": 15.7,
+  "tree_wtd_E": 0.648,
+  "tree_wtd_median_income_k": 730,
+  "tree_wtd_heat_anom_c": 6.26,
+  "li_reached": 399,
+  "age65_in_receiving_li": 539899
  },
  "empty_pits": 15534,
  "new_spots": 4945,
  "pits_total": 50904,
- "alloc_to_new_spots": 959,
+ "alloc_to_new_spots": 1758,
  "city_TES_mean": 63.4,
  "li_TES_below_70": 312
 }

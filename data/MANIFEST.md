@@ -50,3 +50,10 @@ Taipei Open Data license = 政府資料開放授權條款-第1版 (OGDL v1, CC-B
 | Canopy clip | derived/canopy_meta_taipei.tif | Meta/WRI CHM v2 (https://source.coop/tge-labs/meta-chm-v2; tiles 1321231203/1212/1221/1230, windowed HTTP read) | CC BY 4.0 (cite Tolan 2024) | 29.5 MB | uint8 height in m, EPSG:3857, 2x downsampled to ~2.4 m. Source imagery 2005-2020 (mixed vintage; obs-date metadata not checked). |
 | Canopy per 里 | derived/li_canopy_meta.csv | same + ESA WorldCover | CC BY 4.0 | 456 | canopy_meta = share of ~1.19 m pixels with height >= 3 m; canopy_worldcover = class 10 share (10 m, 2021). |
 | Canopy per pit | derived/pit_canopy.csv | same | CC BY 4.0 | 15,536 | canopy_15m = share of >=3 m pixels within 15 m ground radius of the empty pit. High = already shaded. |
+
+## Added 2026-10-14 (analysis/extras.py)
+| name | file | source | license | rows | notes |
+|---|---|---|---|---|---|
+| Street trees, 2024-11-21 archive | raw/archive/TaipeiTree_20241121.csv | Wayback Machine capture of tppkl.blob.core.windows.net/blobfs/TaipeiTree.csv (https://web.archive.org/web/20241121065019/...) | OGDL v1 | 95,498 | Same schema as today's file. Only one other capture exists (2026-10-07). Diff: tree with no current tree within 5 m = "gone" (5,472); 2 m gives 7,833. Losses cluster on whole road stretches (光復南路, 松仁路): may be removal, transplant for works, or a records change. |
+| OSM park polygons | raw/osm_parks_geom.json | Overpass, leisure=park/garden/nature_reserve, out geom | ODbL | 2,911 elements (232 ≥ 0.5 ha after polygonizing) | Plus 125 official parks (公園基本資料 ≥ 0.5 ha) not covered by OSM, as circles of their stated area. Park access is straight-line 300 m, not network distance. |
+| Derived | derived/li_extras.csv, trees_gone.csv, small_pits.csv, extras_summary.json | above + sidewalk_treepit polygons | as sources | 456 / 5,472 / 1,056 | small pit = tree DBH ≥ 30 cm within 0.5 m of a 樹穴 polygon < 1.44 m² (1.2 m square, 公園處's own ask per research/taipei-planting-process.md). |

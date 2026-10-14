@@ -4,10 +4,10 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>一樹同仁 · 台北樹蔭地圖</title>
-<meta name="description" content="去年台北移除了 3,164 棵樹。該種回哪裡？先種在最熱、最需要樹蔭的里，並一起用街景修正市府資料。開源。">
+<meta name="description" content="比對市府自己的行道樹資料：2024 年 11 月到今天，5,472 棵行道樹的位置上已經沒有樹。每個里都查得到；先種回最熱、最需要樹蔭的里。開源。">
 <meta property="og:type" content="website">
-<meta property="og:title" content="去年台北移除了 3,164 棵樹，該種回哪裡？">
-<meta property="og:description" content="同樣的樹，先種在最需要的里，3 倍的樹會落在最熱、最缺樹蔭的地方。點開看你住的里。">
+<meta property="og:title" content="市府資料裡，兩年少了 5,472 棵行道樹。該種回哪裡？">
+<meta property="og:description" content="點開你住的里：少了幾棵樹、樹穴夠不夠大、300 公尺內有沒有公園，以及該先種在哪裡。">
 <meta property="og:image" content="https://dandanbang.github.io/shade-equity/og.png">
 <meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
 <meta property="og:url" content="https://dandanbang.github.io/shade-equity/">
@@ -23,12 +23,12 @@
 
 <section id="hero" class="card">
   <p class="eyebrow">一樹同仁 · 台北樹蔭地圖</p>
-  <h1>去年，台北移除了<br><b>3,164</b> 棵樹。</h1>
-  <p class="lede">該種回哪裡？按下面的按鈕看答案；點任何一個里，看它為什麼需要樹蔭。</p>
+  <h1>市府自己的資料裡，<br>兩年少了 <b id="h-gone">5,472</b> 棵行道樹。</h1>
+  <p class="lede">2024 年 11 月的樹籍資料有樹、今天同一位置沒有樹（可能是移除、移植或資料變更）。每個里都查得到。該種回哪裡？按下面看答案。</p>
   <button id="btn-plant" class="primary" disabled>載入地圖中…</button>
 
   <div id="result" hidden>
-    <p class="big"><b>3 倍</b>的樹種到最需要的里</p>
+    <p class="big"></p>
     <p class="small" id="mode-line"></p>
     <div id="compare">
       <div class="stat"><small>種在最需要的 20% 里</small><span id="s-share"></span><em id="s-share-vs"></em></div>
@@ -51,6 +51,12 @@
   <h2 id="p-name"></h2>
   <div class="score"><span id="p-tes"></span><small>/100 樹蔭公平分數</small></div>
   <p id="p-verdict" class="verdict"></p>
+
+  <section id="p-open">
+    <p class="q">這個里的樹，公開可查</p>
+    <div id="p-checks"></div>
+    <p class="small"><button class="link" id="p-show-gone">在地圖上看消失的樹 →</button> · <a href="https://geopkl.gov.taipei/" target="_blank" rel="noopener">到公園處查移樹履歷 ↗</a></p>
+  </section>
 
   <p class="q" id="p-why-title">為什麼這裡需要樹蔭？</p>
   <div id="p-bars"></div>
@@ -76,12 +82,14 @@
     <span><i class="dot fill"></i>建議種樹點</span>
     <span><i class="dot ring"></i>新增樹穴（需現勘）</span>
     <span><i class="dot gray"></i>空樹穴（待確認）</span>
+    <span><i class="dot gone"></i>2024 年有、現在沒有的樹</span>
+    <span><i class="dot small-pit"></i>樹穴偏小的大樹</span>
   </div>
 </div>
 <div id="legend-mini" class="small"><i class="sw"></i>越橘越缺樹蔭 <i class="dot fill"></i>種樹點</div>
 
 <footer class="small">
-  資料：臺北市政府開放資料、內政部、財政部、Landsat、Meta/WRI 樹冠高度。方法：Tree Equity Score。
+  資料：臺北市政府開放資料（含 2024-11 網際網路檔案館存檔）、內政部、財政部、Landsat、Meta/WRI 樹冠高度、OpenStreetMap。方法：Tree Equity Score。
   <a href="about.html">方法與資料</a> · <a href="https://github.com/dandanbang/shade-equity">開源原始碼</a>
 </footer>
 <div id="toast" role="status" aria-live="polite" hidden></div>
